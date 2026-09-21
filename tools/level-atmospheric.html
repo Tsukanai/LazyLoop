@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Level | LazyLoop</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a class="back-link" href="../tools/level.html">
+            ‹ LazyLoop
+        </a>
+
+
+        <header class="main-header">
+
+            <h1>Level</h1>
+
+            <p>
+                Hydrostatic & differential pressure level
+            </p>
+
+        </header>
+
+
+        <section class="calculator-card">
+
+            <div class="standard-info">
+
+                <strong>Atmospheric / Vented Vessel</strong><br>
+
+                Transmitter = 0 cm · Above = + · Below = −
+
+            </div>
+
+
+            <h2>Measurement Range</h2>
+
+
+            <div class="engineering-grid">
+
+                <label>
+                    0% Level Height
+
+                    <div class="value-input">
+
+                        <input
+                            id="zeroHeight"
+                            type="number"
+                            value="10"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>cm</span>
+
+                    </div>
+
+                </label>
+
+
+                <label>
+                    100% Level Height
+
+                    <div class="value-input">
+
+                        <input
+                            id="fullHeight"
+                            type="number"
+                            value="500"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>cm</span>
+
+                    </div>
+
+                </label>
+                <div class="calculated-field">
+
+    <label>
+        Geometric Span
+    </label>
+
+    <div class="calculated-value">
+        <span id="geometricSpan">495</span>
+        <span>cm</span>
+    </div>
+
+</div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <h2>Process Liquid</h2>
+
+
+            <div class="engineering-grid">
+
+                <label>
+                    Density
+
+                    <div class="value-input">
+
+                        <input
+                            id="density"
+                            type="number"
+                            value="830"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>kg/m³</span>
+
+                    </div>
+
+                </label>
+
+
+                <label>
+                    Specific Gravity
+
+                    <input
+                        id="specificGravity"
+                        type="number"
+                        value="0.83"
+                        step="any"
+                        inputmode="decimal"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <h2>Transmitter Range</h2>
+
+
+            <div class="pt100-reference">
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        LRV
+                    </span>
+
+                    <span
+                        id="lrv"
+                        class="reference-resistance"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        URV
+                    </span>
+
+                    <span
+                        id="urv"
+                        class="reference-resistance"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        Span
+                    </span>
+
+                    <span
+                        id="span"
+                        class="reference-resistance"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="range-note">
+                Hydrostatic pressure · standard gravity 9.80665 m/s²
+            </p>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="level-atmospheric.js"></script>
+
+</body>
+
+</html>

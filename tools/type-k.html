@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Type K Thermocouple | LazyLoop</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a class="back-link" href="temperature.html">
+            ‹ Temperature
+        </a>
+
+        <header class="main-header">
+            <h1>Thermocouple (K)</h1>
+            <p>EMF ⇄ Temperature</p>
+        </header>
+
+
+        <section class="calculator-card">
+
+            <div class="standard-info">
+                <strong>Type K · ITS-90</strong><br>
+                NIST reference function
+            </div>
+
+
+            <h2>Cold Junction / Reference</h2>
+
+            <div class="value-input">
+
+                <input
+                    id="coldJunction"
+                    type="number"
+                    value="0"
+                    step="any"
+                    inputmode="decimal"
+                >
+
+                <span>°C</span>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="conversion">
+
+                <div>
+
+                    <label>Thermocouple EMF</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="emf"
+                            type="number"
+                            value="4.096"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>mV</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="conversion-arrow">
+                    ⇄
+                </div>
+
+
+                <div>
+
+                    <label>Hot Junction</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="temperature"
+                            type="number"
+                            value="100"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>°C</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="pt100-reference">
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        Cold Junction
+                    </span>
+
+                    <span
+                        id="cjcDisplay"
+                        class="reference-resistance"
+                    >
+                        0 °C
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        Hot Junction
+                    </span>
+
+                    <span
+                        id="hotDisplay"
+                        class="reference-resistance"
+                    >
+                        100 °C
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        Measured EMF
+                    </span>
+
+                    <span
+                        id="emfDisplay"
+                        class="reference-resistance"
+                    >
+                        4.096 mV
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="range-note">
+                Type K ITS-90 · −270 to +1372 °C
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script src="type-k.js"></script>
+
+</body>
+
+</html>

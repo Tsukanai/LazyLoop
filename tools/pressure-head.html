@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pressure / Head | LazyLoop</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a class="back-link" href="pressure.html">
+            ‹ Pressure
+        </a>
+
+
+        <header class="main-header">
+
+            <h1>Pressure / Head</h1>
+
+            <p>
+                Liquid column pressure
+            </p>
+
+        </header>
+
+
+        <section class="calculator-card">
+
+
+            <div class="standard-info">
+
+                <strong>P = ρgh</strong><br>
+
+                Standard gravity · 9.80665 m/s²
+
+            </div>
+
+
+            <div class="conversion">
+
+
+                <div>
+
+                    <label>Pressure</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="pressure"
+                            type="number"
+                            value="0.980665"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>bar</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="conversion-arrow">
+                    ⇄
+                </div>
+
+
+                <div>
+
+                    <label>Liquid Head</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="head"
+                            type="number"
+                            value="10"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>m</span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <h2>Liquid Properties</h2>
+
+
+            <div class="engineering-grid pressure-properties">
+
+
+                <label>
+                    Density
+
+                    <div class="value-input">
+
+                        <input
+                            id="density"
+                            type="number"
+                            value="1000"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>kg/m³</span>
+
+                    </div>
+
+                </label>
+
+
+                <label>
+                    Specific Gravity
+
+                    <input
+                        id="specificGravity"
+                        type="number"
+                        value="1"
+                        step="any"
+                        inputmode="decimal"
+                    >
+
+                </label>
+
+
+            </div>
+
+
+            <p class="range-note">
+                Density and SG referenced to 1000 kg/m³
+            </p>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="pressure-head.js"></script>
+
+</body>
+
+</html>

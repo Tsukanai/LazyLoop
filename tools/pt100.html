@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pt100 | LazyLoop</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a class="back-link" href="../index.html">
+            ‹ LazyLoop
+        </a>
+
+
+        <header class="main-header">
+
+            <h1>Pt100</h1>
+
+            <p>
+                Resistance ⇄ Temperature
+            </p>
+
+        </header>
+
+
+        <section class="calculator-card">
+
+
+            <div class="standard-info">
+
+                <strong>IEC 60751 · Pt385</strong><br>
+
+                R₀ = 100 Ω · α = 0.00385
+
+            </div>
+
+
+            <div class="conversion">
+
+
+                <div>
+
+                    <label>
+                        Resistance
+                    </label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="resistance"
+                            type="number"
+                            value="138.506"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>Ω</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="conversion-arrow">
+                    ⇄
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Temperature
+                    </label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="temperature"
+                            type="number"
+                            value="100"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>°C</span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="pt100-reference">
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        0 °C
+                    </span>
+
+                    <span class="reference-resistance">
+                        100.000 Ω
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        100 °C
+                    </span>
+
+                    <span class="reference-resistance">
+                        138.506 Ω
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        200 °C
+                    </span>
+
+                    <span class="reference-resistance">
+                        175.856 Ω
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="range-note">
+                IEC 60751 characteristic · −200 to +850 °C
+            </p>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="pt100.js"></script>
+
+</body>
+
+</html>

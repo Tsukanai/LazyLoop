@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>4–20 mA | LazyLoop</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a class="back-link" href="../index.html">
+            ‹ LazyLoop
+        </a>
+
+        <header class="main-header">
+            <h1>4–20 mA</h1>
+            <p>Current signal scaling</p>
+        </header>
+
+
+        <section class="calculator-card">
+
+            <h2>Engineering Range</h2>
+
+            <div class="engineering-grid">
+
+                <label>
+                    Low
+                    <input
+                        id="engineeringLow"
+                        type="number"
+                        value="0"
+                        step="any"
+                        inputmode="decimal"
+                    >
+                </label>
+
+                <label>
+                    High
+                    <input
+                        id="engineeringHigh"
+                        type="number"
+                        value="100"
+                        step="any"
+                        inputmode="decimal"
+                    >
+                </label>
+
+                <label>
+                    Unit
+                    <input
+                        id="unit"
+                        type="text"
+                        value="bar"
+                        autocomplete="off"
+                    >
+                </label>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="conversion">
+
+                <div>
+
+                    <label>Current</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="current"
+                            type="number"
+                            value="12"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>mA</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="conversion-arrow">
+                    ⇄
+                </div>
+
+
+                <div>
+
+                    <label>Process Value</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="processValue"
+                            type="number"
+                            value="50"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span id="processUnit">bar</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="percent">
+                <span id="percent">50.00</span> %
+            </div>
+
+
+            <div class="signal-section">
+
+                <div class="signal-bar-wrap">
+
+                    <div class="signal-region-names">
+                        <span class="region-low">FAIL / UNDER</span>
+                        <span class="region-normal">NORMAL RANGE</span>
+                        <span class="region-high">OVER / FAIL</span>
+                    </div>
+
+
+                    <div class="signal-bar">
+
+                        <div class="zone failure-low"></div>
+                        <div class="zone warning-low"></div>
+                        <div class="zone measurement"></div>
+                        <div class="zone warning-high"></div>
+                        <div class="zone failure-high"></div>
+
+                        <div
+                            id="signalMarker"
+                            class="signal-marker"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="nominal-scale">
+
+                        <span class="scale-low">
+                            4
+                        </span>
+
+                        <span class="scale-middle">
+                            12
+                        </span>
+
+                        <span class="scale-high">
+                            20
+                        </span>
+
+                    </div>
+
+
+                    <div class="signal-unit">
+                        mA
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="signalStatus"
+                    class="signal-status in-range"
+                >
+                    IN RANGE
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="current.js"></script>
+
+</body>
+
+</html>

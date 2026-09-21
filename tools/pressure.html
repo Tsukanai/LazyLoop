@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pressure | LazyLoop</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a class="back-link" href="../index.html">
+            ‹ LazyLoop
+        </a>
+
+
+        <header class="main-header">
+
+            <h1>Pressure</h1>
+
+            <p>
+                Pressure conversion & field tools
+            </p>
+
+        </header>
+
+
+        <section class="calculator-card">
+
+            <h2>Pressure Conversion</h2>
+
+
+            <div class="pressure-unit-grid">
+
+                <label>
+                    bar
+                    <input
+                        id="bar"
+                        type="number"
+                        value="1"
+                        step="any"
+                        inputmode="decimal"
+                    >
+                </label>
+
+
+                <label>
+                    kPa
+                    <input
+                        id="kpa"
+                        type="number"
+                        step="any"
+                        inputmode="decimal"
+                    >
+                </label>
+
+
+                <label>
+                    MPa
+                    <input
+                        id="mpa"
+                        type="number"
+                        step="any"
+                        inputmode="decimal"
+                    >
+                </label>
+
+
+                <label>
+                    mbar
+                    <input
+                        id="mbar"
+                        type="number"
+                        step="any"
+                        inputmode="decimal"
+                    >
+                </label>
+
+
+                <label>
+                    psi
+                    <input
+                        id="psi"
+                        type="number"
+                        step="any"
+                        inputmode="decimal"
+                    >
+                </label>
+
+
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <h2>Gauge / Absolute</h2>
+
+
+            <div class="conversion">
+
+                <div>
+
+                    <label>Gauge Pressure</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="gauge"
+                            type="number"
+                            value="0"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>bar(g)</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="conversion-arrow">
+                    ⇄
+                </div>
+
+
+                <div>
+
+                    <label>Absolute Pressure</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="absolute"
+                            type="number"
+                            value="1.01325"
+                            step="any"
+                            inputmode="decimal"
+                        >
+
+                        <span>bar(a)</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="standard-info pressure-atmosphere">
+
+                <strong>Atmospheric pressure</strong>
+
+                <div class="value-input">
+
+                    <input
+                        id="atmosphere"
+                        type="number"
+                        value="1.01325"
+                        step="any"
+                        inputmode="decimal"
+                    >
+
+                    <span>bar(a)</span>
+
+                </div>
+
+            </div>
+
+            <div
+    id="pressureWarning"
+    class="signal-status failure pressure-warning"
+>
+    ABSOLUTE PRESSURE &lt; 0 — PHYSICS DISAGREES
+</div>
+
+        </section>
+
+
+        <a class="tool-card pressure-secondary-tool"
+           href="pressure-head.html">
+
+            <div class="tool-symbol">
+                H
+            </div>
+
+            <div class="tool-info">
+
+                <h2>Pressure / Head</h2>
+
+                <p>
+                    Pressure ⇄ liquid column · Density · SG
+                </p>
+
+            </div>
+
+            <div class="tool-arrow">
+                ›
+            </div>
+
+        </a>
+
+
+    </main>
+
+
+    <script src="pressure.js"></script>
+
+</body>
+
+</html>
