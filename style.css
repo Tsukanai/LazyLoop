@@ -1,5 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
 
+:root {
+    color-scheme: dark;
+    --bg: #181a1d; --text: #e6e6e6; --muted: #9299a1; --surface: #22252a;
+    --border: #363a40; --surface-hover: #282c31; --border-hover: #50565e;
+    --accent-border: #52787c; --surface-deep: #191c1f; --border-strong: #41464d;
+    --accent: #a8c9cc; --subtle: #69717a; --warning-border-soft: #62583c;
+    --warning: #d6b56a; --footer: #626970; --link: #9da5ad; --bright: #ffffff;
+    --border-soft: #34383e; --label: #9ca3aa; --label-strong: #b7bdc4;
+    --input-bg: #17191c; --input-text: #f2f2f2; --input-border: #40454c; --focus: #6f9fa3;
+    --divider: #373b41; --quiet: #777f87; --bar-track: #30343a; --danger-fill: #74474a;
+    --warning-fill: #74643e; --normal-fill: #3f5c5f; --marker: #f1f1f1;
+    --scale-text: #8d959d; --scale-quiet: #686f77; --status-border: #4b5158;
+    --warning-text: #d6b76a; --warning-border: #806c3e; --danger-text: #e07878;
+    --danger-border: #914848; --border-alt: #343a40; --note: #8f979f;
+    --result-accent: #b8cfd1; --value-text: #c7cbcf; --secondary: #6f767d;
+    --button-bg: #1d2024; --button-border: #4a5057; --overlay-bg: rgba(10,12,14,.92);
+    --overlay-card: #171a1d; --overlay-border: #3a4046; --close-bg: rgba(20,23,26,.85);
+    --help-border: #9a7440; --help-bg: rgba(154,116,64,.08); --help-accent: #d6a45f;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #eef1f2; --text: #20282c; --muted: #5f6b71; --surface: #ffffff;
+    --border: #cbd3d6; --surface-hover: #f5f7f7; --border-hover: #98a7ac;
+    --accent-border: #5e8c91; --surface-deep: #e8eeee; --border-strong: #b6c2c6;
+    --accent: #245f66; --subtle: #68777d; --warning-border-soft: #b49b60;
+    --warning: #795b16; --footer: #667278; --link: #4e6067; --bright: #172126;
+    --border-soft: #d1d8da; --label: #56666c; --label-strong: #46575d;
+    --input-bg: #ffffff; --input-text: #182126; --input-border: #aebbc0; --focus: #39777d;
+    --divider: #d3dadc; --quiet: #64747a; --bar-track: #dfe5e7; --danger-fill: #a95c61;
+    --warning-fill: #a88b42; --normal-fill: #4e7b7f; --marker: #182126;
+    --scale-text: #5c6a70; --scale-quiet: #718087; --status-border: #aab7bb;
+    --warning-text: #765713; --warning-border: #a98535; --danger-text: #a13d43;
+    --danger-border: #b65b60; --border-alt: #c8d1d4; --note: #596a70;
+    --result-accent: #285f65; --value-text: #26343a; --secondary: #69797f;
+    --button-bg: #f4f7f7; --button-border: #aebbc0; --overlay-bg: rgba(28,35,38,.72);
+    --overlay-card: #ffffff; --overlay-border: #b9c4c8; --close-bg: rgba(238,242,243,.94);
+    --help-border: #9b752c; --help-bg: rgba(155,117,44,.09); --help-accent: #73520f;
+}
+
 
 /* ==================================================
    LazyLoop
@@ -20,8 +60,8 @@ body {
         "Cascadia Mono",
         Consolas,
         monospace;
-    background: #181a1d;
-    color: #e6e6e6;
+    background: var(--bg);
+    color: var(--text);
 }
 
 a {
@@ -58,7 +98,7 @@ a {
 
 .main-header p {
     margin: 7px 0 0;
-    color: #9299a1;
+    color: var(--muted);
     font-size: 15px;
 }
 
@@ -84,8 +124,8 @@ a {
     gap: 18px;
     padding: 24px;
     text-decoration: none;
-    background: #22252a;
-    border: 1px solid #363a40;
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 10px;
     transition:
         background 120ms ease,
@@ -94,8 +134,8 @@ a {
 }
 
 .tool-card:hover {
-    background: #282c31;
-    border-color: #50565e;
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
 }
 
 .tool-card:active {
@@ -105,7 +145,7 @@ a {
 .primary-tool {
     grid-column: 1 / -1;
     min-height: 180px;
-    border-color: #52787c;
+    border-color: var(--accent-border);
 }
 
 .tool-symbol {
@@ -114,10 +154,10 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #191c1f;
-    border: 1px solid #41464d;
+    background: var(--surface-deep);
+    border: 1px solid var(--border-strong);
     border-radius: 8px;
-    color: #a8c9cc;
+    color: var(--accent);
     font-size: 20px;
     font-weight: 600;
 }
@@ -136,12 +176,12 @@ a {
 
 .tool-info p {
     margin: 7px 0 0;
-    color: #9299a1;
+    color: var(--muted);
     font-size: 13px;
 }
 
 .tool-arrow {
-    color: #69717a;
+    color: var(--subtle);
     font-size: 35px;
     font-weight: 300;
 }
@@ -152,12 +192,12 @@ a {
 -------------------------------------------------- */
 
 .tool-card.in-progress {
-    border-color: #62583c;
+    border-color: var(--warning-border-soft);
 }
 
 .tool-card.in-progress .tool-symbol,
 .tool-card.in-progress .tool-arrow {
-    color: #d6b56a;
+    color: var(--warning);
 }
 
 .tool-title-row {
@@ -167,7 +207,7 @@ a {
 }
 
 .progress-status {
-    color: #d6b56a;
+    color: var(--warning);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -177,7 +217,7 @@ a {
 footer {
     margin-top: 40px;
     text-align: center;
-    color: #626970;
+    color: var(--footer);
     font-size: 12px;
 }
 
@@ -189,26 +229,26 @@ footer {
 .back-link {
     display: inline-block;
     margin-bottom: 25px;
-    color: #9da5ad;
+    color: var(--link);
     text-decoration: none;
     font-size: 14px;
 }
 
 .back-link:hover {
-    color: #ffffff;
+    color: var(--bright);
 }
 
 .calculator-card {
     padding: 30px;
-    background: #22252a;
-    border: 1px solid #34383e;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
     border-radius: 10px;
 }
 
 .calculator-card h2 {
     margin-top: 0;
     margin-bottom: 14px;
-    color: #9ca3aa;
+    color: var(--label);
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -233,7 +273,7 @@ label {
     display: flex;
     flex-direction: column;
     gap: 7px;
-    color: #b7bdc4;
+    color: var(--label-strong);
     font-size: 13px;
 }
 
@@ -241,16 +281,16 @@ input {
     width: 100%;
     padding: 12px;
     font-family: inherit;
-    background: #17191c;
-    color: #f2f2f2;
-    border: 1px solid #40454c;
+    background: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--input-border);
     border-radius: 5px;
     font-size: 18px;
 }
 
 input:focus {
     outline: none;
-    border-color: #6f9fa3;
+    border-color: var(--focus);
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -272,7 +312,7 @@ input[type="number"] {
 .divider {
     height: 1px;
     margin: 6px 0 30px;
-    background: #373b41;
+    background: var(--divider);
 }
 
 .conversion {
@@ -303,26 +343,26 @@ input[type="number"] {
 .value-input span {
     flex: 0 0 auto;
     min-width: 0;
-    color: #9ca3aa;
+    color: var(--label);
     font-size: 15px;
     white-space: nowrap;
 }
 
 .conversion-arrow {
     padding-bottom: 9px;
-    color: #6f9fa3;
+    color: var(--focus);
     font-size: 30px;
 }
 
 .percent {
     margin-top: 25px;
     text-align: center;
-    color: #9ca3aa;
+    color: var(--label);
     font-size: 16px;
 }
 
 .percent span {
-    color: #e6e6e6;
+    color: var(--text);
     font-size: 24px;
 }
 
@@ -334,7 +374,7 @@ input[type="number"] {
 .signal-section {
     margin-top: 30px;
     padding-top: 26px;
-    border-top: 1px solid #373b41;
+    border-top: 1px solid var(--divider);
 }
 
 .signal-bar-wrap {
@@ -347,7 +387,7 @@ input[type="number"] {
     position: relative;
     height: 22px;
     margin-bottom: 6px;
-    color: #777f87;
+    color: var(--quiet);
     font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -375,7 +415,7 @@ input[type="number"] {
     height: 14px;
     display: flex;
     overflow: visible;
-    background: #30343a;
+    background: var(--bar-track);
     border-radius: 7px;
 }
 
@@ -385,28 +425,28 @@ input[type="number"] {
 
 .failure-low {
     width: 1.12%;
-    background: #74474a;
+    background: var(--danger-fill);
     border-radius: 7px 0 0 7px;
 }
 
 .warning-low {
     width: 2.25%;
-    background: #74643e;
+    background: var(--warning-fill);
 }
 
 .measurement {
     width: 89.89%;
-    background: #3f5c5f;
+    background: var(--normal-fill);
 }
 
 .warning-high {
     width: 5.62%;
-    background: #74643e;
+    background: var(--warning-fill);
 }
 
 .failure-high {
     width: 1.12%;
-    background: #74474a;
+    background: var(--danger-fill);
     border-radius: 0 7px 7px 0;
 }
 
@@ -415,19 +455,19 @@ input[type="number"] {
     top: 50%;
     width: 4px;
     height: 28px;
-    background: #f1f1f1;
+    background: var(--marker);
     border-radius: 2px;
     transform:
         translate(-50%, -50%);
     box-shadow:
-        0 0 0 2px #181a1d;
+        0 0 0 2px var(--bg);
 }
 
 .nominal-scale {
     position: relative;
     height: 22px;
     margin-top: 8px;
-    color: #8d959d;
+    color: var(--scale-text);
     font-size: 11px;
 }
 
@@ -451,7 +491,7 @@ input[type="number"] {
 .signal-unit {
     margin-top: 0;
     text-align: center;
-    color: #686f77;
+    color: var(--scale-quiet);
     font-size: 10px;
 }
 
@@ -471,18 +511,18 @@ input[type="number"] {
 }
 
 .signal-status.in-range {
-    color: #9ca3aa;
-    border: 1px solid #4b5158;
+    color: var(--label);
+    border: 1px solid var(--status-border);
 }
 
 .signal-status.warning {
-    color: #d6b76a;
-    border: 1px solid #806c3e;
+    color: var(--warning-text);
+    border: 1px solid var(--warning-border);
 }
 
 .signal-status.failure {
-    color: #e07878;
-    border: 1px solid #914848;
+    color: var(--danger-text);
+    border: 1px solid var(--danger-border);
 }
 
 
@@ -493,16 +533,16 @@ input[type="number"] {
 .standard-info {
     margin-bottom: 28px;
     padding: 14px 16px;
-    background: #191c1f;
-    border: 1px solid #343a40;
+    background: var(--surface-deep);
+    border: 1px solid var(--border-alt);
     border-radius: 6px;
-    color: #8f979f;
+    color: var(--note);
     font-size: 12px;
     line-height: 1.7;
 }
 
 .standard-info strong {
-    color: #b8cfd1;
+    color: var(--result-accent);
     font-weight: 500;
 }
 
@@ -516,27 +556,27 @@ input[type="number"] {
 .reference-item {
     padding: 14px;
     text-align: center;
-    background: #191c1f;
-    border: 1px solid #34383e;
+    background: var(--surface-deep);
+    border: 1px solid var(--border-soft);
     border-radius: 6px;
 }
 
 .reference-temperature {
     display: block;
     margin-bottom: 5px;
-    color: #777f87;
+    color: var(--quiet);
     font-size: 11px;
 }
 
 .reference-resistance {
-    color: #c7cbcf;
+    color: var(--value-text);
     font-size: 14px;
 }
 
 .range-note {
     margin: 22px 0 0;
     text-align: center;
-    color: #6f767d;
+    color: var(--secondary);
     font-size: 11px;
 }
 
@@ -551,7 +591,7 @@ input[type="number"] {
 }
 
 .calculated-field > label {
-    color: #b7bdc4;
+    color: var(--label-strong);
     font-size: 13px;
 }
 
@@ -561,19 +601,19 @@ input[type="number"] {
     align-items: center;
     gap: 10px;
     padding: 12px;
-    background: #1d2024;
-    border: 1px solid #34383e;
+    background: var(--button-bg);
+    border: 1px solid var(--border-soft);
     border-radius: 5px;
 }
 
 .calculated-value span:first-child {
-    color: #c7cbcf;
+    color: var(--value-text);
     font-size: 27px;
     font-weight: 500;
 }
 
 .calculated-value span:last-child {
-    color: #9ca3aa;
+    color: var(--label);
     font-size: 15px;
 }
 
@@ -587,10 +627,10 @@ input[type="number"] {
     width: 24px;
     height: 24px;
     padding: 0;
-    border: 1px solid #4a5057;
+    border: 1px solid var(--button-border);
     border-radius: 50%;
-    background: #1d2024;
-    color: #c7cbcf;
+    background: var(--button-bg);
+    color: var(--value-text);
     font: inherit;
     font-size: 13px;
     font-weight: 600;
@@ -603,7 +643,7 @@ input[type="number"] {
     inset: 0;
     z-index: 1000;
     padding: 20px;
-    background: rgba(10, 12, 14, 0.92);
+    background: var(--overlay-bg);
     overflow-y: auto;
 }
 
@@ -618,8 +658,8 @@ input[type="number"] {
     width: 100%;
     max-width: 700px;
     margin: auto;
-    background: #171a1d;
-    border: 1px solid #3a4046;
+    background: var(--overlay-card);
+    border: 1px solid var(--overlay-border);
     border-radius: 8px;
 }
 
@@ -639,8 +679,8 @@ input[type="number"] {
     height: 44px;
     border: none;
     border-radius: 50%;
-    background: rgba(20, 23, 26, 0.85);
-    color: #c7cbcf;
+    background: var(--close-bg);
+    color: var(--value-text);
     font: inherit;
     font-size: 28px;
     cursor: pointer;
@@ -654,10 +694,10 @@ input[type="number"] {
 .range-warning {
     margin-top: 18px;
     padding: 12px 14px;
-    border: 1px solid #9a7440;
+    border: 1px solid var(--help-border);
     border-radius: 6px;
-    background: rgba(154, 116, 64, 0.08);
-    color: #d6a45f;
+    background: var(--help-bg);
+    color: var(--help-accent);
     font-size: 14px;
     line-height: 1.5;
 }
@@ -686,7 +726,7 @@ input[type="number"] {
     }
 
     .tool-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 12px;
     }
 
@@ -699,7 +739,7 @@ input[type="number"] {
         min-height: 120px;
         grid-template-columns:
             64px
-            1fr
+            minmax(0, 1fr)
             auto;
         padding: 18px;
         gap: 15px;
@@ -712,15 +752,22 @@ input[type="number"] {
         font-size: 18px;
     }
 
+    .tool-info {
+        min-width: 0;
+    }
+
     .tool-info h2 {
         font-size: 19px;
+        overflow-wrap: anywhere;
     }
 
     .tool-info p {
         font-size: 12px;
+        overflow-wrap: anywhere;
     }
 
     .tool-title-row {
+        flex-wrap: wrap;
         gap: 8px;
     }
 
@@ -736,6 +783,10 @@ input[type="number"] {
         grid-template-columns:
             1fr
             1fr;
+    }
+
+    .level-calculator-page .engineering-grid {
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .engineering-grid > label {
@@ -775,5 +826,57 @@ input[type="number"] {
 
     .pt100-reference {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Shared theme control, inserted by theme.js */
+.theme-toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 1000;
+    min-width: 44px; height: 38px; padding: 0 12px;
+    font: 600 12px/1 "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+    background: var(--button-bg); color: var(--accent);
+    border: 1px solid var(--button-border); border-radius: 6px; cursor: pointer;
+}
+.theme-toggle:hover { background: var(--surface-hover); border-color: var(--border-hover); }
+.theme-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (max-width: 650px) { .theme-toggle { top: 10px; right: 10px; height: 36px; padding: 0 10px; } }
+
+/* Signed numeric inputs */
+.sign-toggle {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 54px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    background: var(--button-bg);
+    color: var(--accent);
+    border: 1px solid var(--button-border);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-toggle:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+}
+
+.sign-toggle:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.sign-toggle:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 650px) {
+    .sign-toggle {
+        height: 56px;
     }
 }

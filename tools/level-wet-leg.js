@@ -1,371 +1,48 @@
-/*
-    LazyLoop
-    Atmospheric / Vented Level
-
-    Fundamental sign convention:
-
-        Transmitter = 0
-        Above transmitter = positive
-        Below transmitter = negative
-
-    Hydrostatic pressure:
-
-        P = rho × g × h
-
-    Inputs:
-        height  = cm relative to transmitter
-        density = kg/m³
-
-    Output:
-        pressure = mbar
-*/
-
-
-// --------------------------------------------------
-// Constants
-// --------------------------------------------------
-
-const GRAVITY =
-    9.80665;
-
-const WATER_REFERENCE_DENSITY =
-    1000;
-
-const PA_PER_MBAR =
-    100;
-
-
-// --------------------------------------------------
-// HTML elements
-// --------------------------------------------------
-
-const zeroHeight =
-    document.getElementById("zeroHeight");
-
-const fullHeight =
-    document.getElementById("fullHeight");
-
-const geometricSpan =
-    document.getElementById("geometricSpan");
-
-const density =
-    document.getElementById("density");
-
-const specificGravity =
-    document.getElementById("specificGravity");
-
-const referenceHeight =
-    document.getElementById("referenceHeight");
-
-const wetLegDensity =
-    document.getElementById("wetLegDensity");
-
-const wetLegSG =
-    document.getElementById("wetLegSG");
-
-const lrv =
-    document.getElementById("lrv");
-
-const urv =
-    document.getElementById("urv");
-
-const span =
-    document.getElementById("span");
-
-
-// --------------------------------------------------
-// Hydrostatic calculation
-// --------------------------------------------------
-
-function pressureFromHeight(
-    heightCm,
-    liquidDensity
-) {
-
-    const heightMetres =
-        heightCm / 100;
-
-    const pressurePa =
-        liquidDensity *
-        GRAVITY *
-        heightMetres;
-
-    const pressureMbar =
-        pressurePa /
-        PA_PER_MBAR;
-
-    return pressureMbar;
+'use strict';
+const GRAVITY = 9.80665;
+const WATER_REFERENCE_DENSITY = 1000;
+const PA_PER_MBAR = 100;
+const ids = ['zeroHeight','fullHeight','geometricSpan','density','specificGravity','referenceHeight','wetLegDensity','wetLegSG','lrv','urv','span'];
+const fields = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+function read(input) {
+  if (input.value.trim() === '' || !input.validity.valid) return NaN;
+  return Number(input.value);
 }
-
-
-// --------------------------------------------------
-// Calculate transmitter range
-// --------------------------------------------------
-
+function format(value, digits = 2) { return Number(value.toFixed(digits)).toString(); }
+function pressureFromHeight(cm, rho) { return rho * GRAVITY * (cm / 100) / PA_PER_MBAR; }
+function clearResults() {
+  for (const id of ['geometricSpan','lrv','urv','span']) fields[id].textContent = '—';
+}
 function calculateRange() {
-
-    const zero =
-        Number(zeroHeight.value);
-
-    const full =
-        Number(fullHeight.value);
-
-    const rho =
-        Number(density.value);
-
-    const reference =
-        Number(referenceHeight.value);
-
-    const referenceRho =
-        Number(wetLegDensity.value);
-
-
-    if (
-        !Number.isFinite(zero) ||
-        !Number.isFinite(full) ||
-        !Number.isFinite(rho) ||
-        !Number.isFinite(reference) ||
-        !Number.isFinite(referenceRho)
-    ) {
-        return;
-    }
-const levelSpan =
-    full - zero;
-
-geometricSpan.textContent =
-    formatHeight(levelSpan);
-
-    const lowPressure =
-        pressureFromHeight(
-            zero,
-            rho
-        );
-
-
-    const highPressure =
-        pressureFromHeight(
-            full,
-            rho
-        );
-
-    const referencePressure =
-        pressureFromHeight(
-            reference,
-            referenceRho
-    );
-
-    const lowDP =
-    lowPressure -
-    referencePressure;
-
-    const highDP =
-    highPressure -
-    referencePressure;
-
-    const pressureSpan =
-    highDP -
-    lowDP;
-
-
-    lrv.textContent =
-        formatPressure(lowDP) +
-        " mbar";
-
-
-    urv.textContent =
-        formatPressure(highDP) +
-        " mbar";
-
-
-    span.textContent =
-        formatPressure(pressureSpan) +
-        " mbar";
+  const zero = read(fields.zeroHeight), full = read(fields.fullHeight);
+  const rho = read(fields.density), reference = read(fields.referenceHeight);
+  const referenceRho = read(fields.wetLegDensity);
+  if (![zero,full,rho,reference,referenceRho].every(Number.isFinite) || rho <= 0 || referenceRho <= 0) {
+    clearResults(); return;
+  }
+  const referencePressure = pressureFromHeight(reference, referenceRho);
+  const lowDP = pressureFromHeight(zero, rho) - referencePressure;
+  const highDP = pressureFromHeight(full, rho) - referencePressure;
+  fields.geometricSpan.textContent = format(full - zero);
+  fields.lrv.textContent = format(lowDP) + ' mbar';
+  fields.urv.textContent = format(highDP) + ' mbar';
+  fields.span.textContent = format(highDP - lowDP) + ' mbar';
 }
-
-
-// --------------------------------------------------
-// Density -> SG
-// --------------------------------------------------
-
-function densityToSG() {
-
-    const rho =
-        Number(density.value);
-
-
-    if (!Number.isFinite(rho)) {
-        return;
-    }
-
-
-    specificGravity.value =
-        formatSG(
-            rho /
-            WATER_REFERENCE_DENSITY
-        );
-
-
-    calculateRange();
+function syncDensity(sourceId, targetId, fromSG) {
+  const value = read(fields[sourceId]);
+  if (!Number.isFinite(value) || value <= 0) { fields[targetId].value = ''; clearResults(); return; }
+  fields[targetId].value = fromSG ? format(value * WATER_REFERENCE_DENSITY) : format(value / WATER_REFERENCE_DENSITY, 4);
+  calculateRange();
 }
-
-
-// --------------------------------------------------
-// SG -> density
-// --------------------------------------------------
-
-function sgToDensity() {
-
-    const sg =
-        Number(specificGravity.value);
-
-
-    if (!Number.isFinite(sg)) {
-        return;
-    }
-
-
-    density.value =
-        formatDensity(
-            sg *
-            WATER_REFERENCE_DENSITY
-        );
-
-
-    calculateRange();
-}
-
-function wetLegDensityToSG() {
-    const rho =
-        Number(wetLegDensity.value);
-
-    if (!Number.isFinite(rho)) {
-        return;
-    }
-
-    wetLegSG.value =
-        formatSG(
-            rho /
-            WATER_REFERENCE_DENSITY
-        );
-
-    calculateRange();
-}
-
-function wetLegSGToDensity() {
-    const sg =
-        Number(wetLegSG.value);
-
-    if (!Number.isFinite(sg)) {
-        return;
-    }
-
-    wetLegDensity.value =
-        formatDensity(
-            sg *
-            WATER_REFERENCE_DENSITY
-        );
-
-    calculateRange();
-}
-// --------------------------------------------------
-// Formatting
-// --------------------------------------------------
-
-function formatPressure(value) {
-
-    return Number(
-        value.toFixed(2)
-    ).toString();
-}
-
-function formatHeight(value) {
-
-    return Number(
-        value.toFixed(2)
-    ).toString();
-}
-
-
-function formatDensity(value) {
-
-    return Number(
-        value.toFixed(2)
-    ).toString();
-}
-
-
-function formatSG(value) {
-
-    return Number(
-        value.toFixed(4)
-    ).toString();
-}
-
-
-// --------------------------------------------------
-// Event listeners
-// --------------------------------------------------
-
-zeroHeight.addEventListener(
-    "input",
-    calculateRange
-);
-
-
-fullHeight.addEventListener(
-    "input",
-    calculateRange
-);
-
-referenceHeight.addEventListener(
-    "input",
-    calculateRange
-);
-
-density.addEventListener(
-    "input",
-    densityToSG
-);
-
-
-specificGravity.addEventListener(
-    "input",
-    sgToDensity
-);
-
-wetLegDensity.addEventListener(
-    "input",
-    wetLegDensityToSG
-);
-
-wetLegSG.addEventListener(
-    "input",
-    wetLegSGToDensity
-);
-
-// --------------------------------------------------
-// Initial calculation
-// --------------------------------------------------
-const wetLegHelpButton =
-    document.getElementById("wetLegHelpButton");
-
-const wetLegHelp =
-    document.getElementById("wetLegHelp");
-
-const wetLegHelpClose =
-    document.getElementById("wetLegHelpClose");
-
-wetLegHelpButton.addEventListener(
-    "click",
-    function () {
-        wetLegHelp.classList.add("open");
-    }
-);
-
-wetLegHelpClose.addEventListener(
-    "click",
-    function () {
-        wetLegHelp.classList.remove("open");
-    }
-);
+for (const id of ['zeroHeight','fullHeight','referenceHeight']) fields[id].addEventListener('input', calculateRange);
+fields.density.addEventListener('input', () => syncDensity('density','specificGravity',false));
+fields.specificGravity.addEventListener('input', () => syncDensity('specificGravity','density',true));
+fields.wetLegDensity.addEventListener('input', () => syncDensity('wetLegDensity','wetLegSG',false));
+fields.wetLegSG.addEventListener('input', () => syncDensity('wetLegSG','wetLegDensity',true));
+const overlay = document.getElementById('wetLegHelp');
+function setHelp(open) { overlay.classList.toggle('open', open); overlay.setAttribute('aria-hidden', String(!open)); }
+document.getElementById('wetLegHelpButton').addEventListener('click', () => setHelp(true));
+document.getElementById('wetLegHelpClose').addEventListener('click', () => setHelp(false));
+overlay.addEventListener('click', event => { if (event.target === overlay) setHelp(false); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') setHelp(false); });
 calculateRange();

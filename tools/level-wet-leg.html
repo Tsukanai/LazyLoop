@@ -1,298 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Wet Leg Level | LazyLoop</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wet Leg Level | LazyLoop</title>
+      <script src="../theme.js"></script>
 
     <link rel="stylesheet" href="../style.css">
 </head>
-
-<body>
-
-    <main class="container">
-
-        <a class="back-link" href="../tools/level.html">
-            ‹ LazyLoop
-        </a>
-
-
-        <header class="main-header">
-
-            <h1>Closed Vessel - Wet Leg</h1>
-
-            <p>
-                DP Level with liquid-filled reference leg
-            </p>
-
-        </header>
-
-
-        <section class="calculator-card">
-
-            <div class="standard-info">
-
-                <strong>Closed Vessel - Wet Leg</strong><br>
-
-                Transmitter = 0 cm · Above = + · Below = −
-
-            </div>
-
-
-            <h2>Measurement Range</h2>
-
-
-            <div class="engineering-grid">
-
-                <label>
-                    0% Level Height
-
-                    <div class="value-input">
-
-                        <input
-                            id="zeroHeight"
-                            type="number"
-                            value="10"
-                            step="any"
-                            inputmode="decimal"
-                        >
-
-                        <span>cm</span>
-
-                    </div>
-
-                </label>
-
-
-                <label>
-                    100% Level Height
-
-                    <div class="value-input">
-
-                        <input
-                            id="fullHeight"
-                            type="number"
-                            value="500"
-                            step="any"
-                            inputmode="decimal"
-                        >
-
-                        <span>cm</span>
-
-                    </div>
-
-                </label>
-                <div class="calculated-field">
-
-    <label>
-        Geometric Span
-    </label>
-
-    <div class="calculated-value">
-        <span id="geometricSpan">495</span>
-        <span>cm</span>
-    </div>
-
-</div>
-
-            </div>
-
-
-            <div class="divider"></div>
-
-
-            <h2>Process Liquid</h2>
-
-
-            <div class="engineering-grid">
-
-                <label>
-                    Density
-
-                    <div class="value-input">
-
-                        <input
-                            id="density"
-                            type="number"
-                            value="830"
-                            step="any"
-                            inputmode="decimal"
-                        >
-
-                        <span>kg/m³</span>
-
-                    </div>
-
-                </label>
-
-
-                <label>
-                    Specific Gravity
-
-                    <input
-                        id="specificGravity"
-                        type="number"
-                        value="0.83"
-                        step="any"
-                        inputmode="decimal"
-                    >
-
-                </label>
-
-            </div>
-<div class="section-divider"></div>
-
-<div class="section-label">
-    REFERENCE LEG
-
-    <button
-        class="help-button"
-        id="wetLegHelpButton"
-        type="button"
-        aria-label="Explain wet leg measurements"
-    >
-        ?
-    </button>
-</div>
-
-<div class="engineering-grid">
-
-    <label>
-        Upper Reference Tap Height
-        <div class="value-input">
-            <input
-                id="referenceHeight"
-                type="number"
-                value="500"
-                step="1"
-            >
-            <span>cm</span>
-        </div>
-    </label>
-
-    <label>
-        Wet Leg Density
-        <div class="value-input">
-            <input
-                id="wetLegDensity"
-                type="number"
-                value="1000"
-                step="1"
-            >
-            <span>kg/m³</span>
-        </div>
-    </label>
-
-    <label>
-        Wet Leg SG
-        <div class="value-input">
-            <input
-                id="wetLegSG"
-                type="number"
-                value="1"
-                step="0.01"
-            >
-        </div>
-    </label>
-
-</div>
-
-            <div class="divider"></div>
-
-
-            <h2>Transmitter Range</h2>
-
-
-            <div class="pt100-reference">
-
-                <div class="reference-item">
-
-                    <span class="reference-temperature">
-                        LRV
-                    </span>
-
-                    <span
-                        id="lrv"
-                        class="reference-resistance"
-                    >
-                        —
-                    </span>
-
-                </div>
-
-
-                <div class="reference-item">
-
-                    <span class="reference-temperature">
-                        URV
-                    </span>
-
-                    <span
-                        id="urv"
-                        class="reference-resistance"
-                    >
-                        —
-                    </span>
-
-                </div>
-
-
-                <div class="reference-item">
-
-                    <span class="reference-temperature">
-                        Span
-                    </span>
-
-                    <span
-                        id="span"
-                        class="reference-resistance"
-                    >
-                        —
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <p class="range-note">
-                Hydrostatic pressure · standard gravity 9.80665 m/s²
-            </p>
-
-
-        </section>
-
-    </main>
-
-
-
-    <div class="help-overlay" id="wetLegHelp">
-
-        <div class="help-overlay-content">
-
-            <button
-                class="help-close"
-                id="wetLegHelpClose"
-                type="button"
-                aria-label="Close help"
-            >
-                ×
-            </button>
-
-            <img
-                src="images/wet-leg-help.png"
-                alt="Wet leg level measurement diagram"
-            >
-
-        </div>
-
-    </div>
-
-    <script src="level-wet-leg.js"></script>
-
+<body class="level-calculator-page">
+  <main class="container">
+    <a class="back-link" href="level.html">‹ Level</a>
+    <header class="main-header"><h1>Closed Vessel - Wet Leg</h1><p>DP Level with liquid-filled reference leg</p></header>
+    <section class="calculator-card">
+      <div class="standard-info"><strong>Closed Vessel - Wet Leg</strong><br>Transmitter = 0 cm · Above = + · Below = −</div>
+      <h2>Measurement Range</h2>
+      <div class="engineering-grid">
+        <label>0% Level Height<div class="value-input"><button class="sign-toggle" type="button" data-target="zeroHeight" aria-label="Change sign of 0% level height">±</button><input id="zeroHeight" type="number" value="10" step="any" inputmode="decimal"
+                        data-signed><span>cm</span></div></label>
+        <label>100% Level Height<div class="value-input"><button class="sign-toggle" type="button" data-target="fullHeight" aria-label="Change sign of 100% level height">±</button><input id="fullHeight" type="number" value="500" step="any" inputmode="decimal"
+                        data-signed><span>cm</span></div></label>
+        <div class="calculated-field"><label>Geometric Span</label><div class="calculated-value"><span id="geometricSpan">—</span><span>cm</span></div></div>
+      </div>
+      <div class="divider"></div>
+      <h2>Process Liquid</h2>
+      <div class="engineering-grid">
+        <label>Density<div class="value-input"><input id="density" type="number" value="830" step="any" inputmode="decimal"><span>kg/m³</span></div></label>
+        <label>Specific Gravity<input id="specificGravity" type="number" value="0.83" step="any" inputmode="decimal"></label>
+      </div>
+      <div class="section-divider"></div>
+      <div class="section-label">REFERENCE LEG <button class="help-button" id="wetLegHelpButton" type="button" aria-label="Explain wet leg measurements">?</button></div>
+      <div class="engineering-grid">
+        <label>Upper Reference Tap Height<div class="value-input"><button class="sign-toggle" type="button" data-target="referenceHeight" aria-label="Change sign of upper reference tap height">±</button><input id="referenceHeight" type="number" value="500" step="any" inputmode="decimal"
+                        data-signed><span>cm</span></div></label>
+        <label>Wet Leg Density<div class="value-input"><input id="wetLegDensity" type="number" value="1000" step="1" inputmode="decimal"><span>kg/m³</span></div></label>
+        <label>Wet Leg SG<input id="wetLegSG" type="number" value="1" step="0.01" inputmode="decimal"></label>
+      </div>
+      <div class="divider"></div>
+      <h2>Transmitter Range</h2>
+      <div class="pt100-reference">
+        <div class="reference-item"><span class="reference-temperature">LRV</span><span id="lrv" class="reference-resistance">—</span></div>
+        <div class="reference-item"><span class="reference-temperature">URV</span><span id="urv" class="reference-resistance">—</span></div>
+        <div class="reference-item"><span class="reference-temperature">Span</span><span id="span" class="reference-resistance">—</span></div>
+      </div>
+      <p class="range-note">Hydrostatic pressure · standard gravity 9.80665 m/s²</p>
+    </section>
+  </main>
+  <div class="help-overlay" id="wetLegHelp" role="dialog" aria-modal="true" aria-label="Wet leg diagram" aria-hidden="true"><div class="help-overlay-content"><button class="help-close" id="wetLegHelpClose" type="button" aria-label="Close help">×</button><img src="images/wet-leg-help.png" alt="Wet leg level measurement diagram"></div></div>
+  <script src="level-wet-leg.js"></script>
 </body>
-
-
 </html>
