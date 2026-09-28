@@ -29,6 +29,18 @@ const mbar =
 const psi =
     document.getElementById("psi");
 
+const mmh2o =
+    document.getElementById("mmh2o");
+
+const inh2o =
+    document.getElementById("inh2o");
+
+const mmhg =
+    document.getElementById("mmhg");
+
+const inhg =
+    document.getElementById("inhg");
+
 const gauge =
     document.getElementById("gauge");
 
@@ -57,6 +69,14 @@ const TO_PA = {
     mbar: 100,
 
     psi: 6894.757293168,
+
+    mmh2o: 9.80665,
+
+    inh2o: 249.08891,
+
+    mmhg: 133.322387415,
+
+    inhg: 3386.389,
 
 };
 
@@ -126,7 +146,40 @@ function updatePressureUnits(
                 pascal / TO_PA.psi
             );
     }
+    if (sourceName !== "mmh2o") {
 
+    mmh2o.value =
+        formatPressure(
+            pascal / TO_PA.mmh2o
+        );
+}
+
+
+    if (sourceName !== "inh2o") {
+
+    inh2o.value =
+        formatPressure(
+            pascal / TO_PA.inh2o
+        );
+}
+
+
+    if (sourceName !== "mmhg") {
+
+    mmhg.value =
+        formatPressure(
+            pascal / TO_PA.mmhg
+        );
+}
+
+
+    if (sourceName !== "inhg") {
+
+    inhg.value =
+        formatPressure(
+            pascal / TO_PA.inhg
+        );
+}
 }
 
 function updatePressureWarning() {
@@ -276,6 +329,48 @@ psi.addEventListener(
     }
 );
 
+mmh2o.addEventListener(
+    "input",
+    function () {
+        updatePressureUnits(
+            "mmh2o",
+            mmh2o
+        );
+    }
+);
+
+
+inh2o.addEventListener(
+    "input",
+    function () {
+        updatePressureUnits(
+            "inh2o",
+            inh2o
+        );
+    }
+);
+
+
+mmhg.addEventListener(
+    "input",
+    function () {
+        updatePressureUnits(
+            "mmhg",
+            mmhg
+        );
+    }
+);
+
+
+inhg.addEventListener(
+    "input",
+    function () {
+        updatePressureUnits(
+            "inhg",
+            inhg
+        );
+    }
+);
 
 // --------------------------------------------------
 // Gauge / absolute event listeners

@@ -167,6 +167,9 @@ a {
     height: 76px;
     font-size: 22px;
 }
+.pressure-secondary-tool {
+    margin-top: 32px;
+}
 
 .tool-info h2 {
     margin: 0;
@@ -221,6 +224,43 @@ footer {
     font-size: 12px;
 }
 
+/* =========================
+   FEEDBACK
+   ========================= */
+
+.feedback-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.feedback-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 16px;
+
+    color: var(--muted);
+    background: transparent;
+
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition:
+        color 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+.feedback-button:hover {
+    color: var(--text);
+    border-color: var(--accent);
+    background: var(--surface);
+}
 
 /* ==================================================
    CALCULATOR
