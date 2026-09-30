@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Type E Thermocouple | LazyLoop</title>
+
+    <script src="../theme.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a class="back-link" href="thermocouple.html">
+            ‹ Thermocouple
+        </a>
+
+        <header class="main-header">
+            <h1>Thermocouple (E)</h1>
+            <p>EMF ⇄ Temperature</p>
+        </header>
+
+
+        <section class="calculator-card">
+
+            <div class="standard-info">
+                <strong>Type E · ITS-90</strong><br>
+                NIST reference function
+            </div>
+
+
+            <h2>Cold Junction / Reference</h2>
+
+            <div class="value-input">
+
+                <input
+                    id="coldJunction"
+                    type="number"
+                    value="0"
+                    step="any"
+                    inputmode="decimal"
+                    data-signed
+                >
+
+                <span>°C</span>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="conversion">
+
+                <div>
+
+                    <label>Thermocouple EMF</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="emf"
+                            type="number"
+                            value="6.319"
+                            step="any"
+                            inputmode="decimal"
+                            data-signed
+                        >
+
+                        <span>mV</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="conversion-arrow">
+                    ⇄
+                </div>
+
+
+                <div>
+
+                    <label>Hot Junction</label>
+
+                    <div class="value-input">
+
+                        <input
+                            id="temperature"
+                            type="number"
+                            value="100"
+                            step="any"
+                            inputmode="decimal"
+                            data-signed
+                        >
+
+                        <span>°C</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="pt100-reference">
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        Cold Junction
+                    </span>
+
+                    <span
+                        id="cjcDisplay"
+                        class="reference-resistance"
+                    >
+                        0 °C
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        Hot Junction
+                    </span>
+
+                    <span
+                        id="hotDisplay"
+                        class="reference-resistance"
+                    >
+                        100 °C
+                    </span>
+
+                </div>
+
+
+                <div class="reference-item">
+
+                    <span class="reference-temperature">
+                        Measured EMF
+                    </span>
+
+                    <span
+                        id="emfDisplay"
+                        class="reference-resistance"
+                    >
+                        6.319 mV
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="range-note">
+                Type E ITS-90 · −270 to +1000 °C
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script src="type-e.js"></script>
+
+</body>
+
+</html>
