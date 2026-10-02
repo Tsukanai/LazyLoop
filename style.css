@@ -920,3 +920,36 @@ input[type="number"] {
         height: 56px;
     }
 }
+
+
+/* Thermocouple conductor reference */
+.tc-materials {
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    background: var(--surface);
+}
+.tc-materials h2 {
+    margin: 0 0 14px;
+    font-size: 13px;
+}
+.tc-materials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+.tc-materials-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+.tc-material-label {
+    color: var(--muted);
+    font-size: 12px;
+}
+.tc-materials strong {
+    overflow-wrap: anywhere;
+    font-size: 14px;
+}

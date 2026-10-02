@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Type J Thermocouple | LazyLoop</title>
+    <title>Type T Thermocouple | LazyLoop</title>
 
-        <script src="../theme.js"></script>
+    <script src="../theme.js"></script>
 
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -21,7 +21,7 @@
         </a>
 
         <header class="main-header">
-            <h1>Thermocouple (J)</h1>
+            <h1>Thermocouple (E)</h1>
             <p>EMF ⇄ Temperature</p>
         </header>
 
@@ -29,7 +29,7 @@
         <section class="calculator-card">
 
             <div class="standard-info">
-                <strong>Type J · ITS-90</strong><br>
+                <strong>Type T · ITS-90</strong><br>
                 NIST reference function
             </div>
 
@@ -44,7 +44,7 @@
                     value="0"
                     step="any"
                     inputmode="decimal"
-                        data-signed
+                    data-signed
                 >
 
                 <span>°C</span>
@@ -66,10 +66,10 @@
                         <input
                             id="emf"
                             type="number"
-                            value="5.269"
+                            value="6.319"
                             step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>mV</span>
@@ -96,7 +96,7 @@
                             value="100"
                             step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>°C</span>
@@ -152,7 +152,7 @@
                         id="emfDisplay"
                         class="reference-resistance"
                     >
-                        5.269 mV
+                        6.319 mV
                     </span>
 
                 </div>
@@ -165,7 +165,7 @@
                 <div class="tc-materials-grid">
                     <div>
                         <span class="tc-material-label">Positive (+)</span>
-                        <strong>Iron</strong>
+                        <strong>Copper</strong>
                     </div>
                     <div>
                         <span class="tc-material-label">Negative (−)</span>
@@ -175,7 +175,7 @@
             </div>
 
             <p class="range-note">
-                Type J ITS-90 · −210 to +1200 °C
+                Type T ITS-90 · -270 to +400 °C
             </p>
 
         </section>
@@ -183,7 +183,7 @@
     </main>
 
 
-    <script src="type-j.js"></script>
+    <script src="type-t.js"></script>
 
 </body>
 
