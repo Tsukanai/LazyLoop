@@ -953,3 +953,18 @@ input[type="number"] {
     overflow-wrap: anywhere;
     font-size: 14px;
 }
+
+/* Flow calculators */
+.flow-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:18px 0 24px}.flow-fields>*{min-width:0}.calculator-card>label{margin:18px 0}.calculator-card select{width:100%;min-width:0;padding:12px;font:inherit;color:var(--input-text);background:var(--input-bg);border:1px solid var(--input-border);border-radius:5px}.flow-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.flow-result{min-width:0;padding:14px;border:1px solid var(--border-soft);border-radius:6px;display:flex;flex-direction:column;gap:9px}.flow-result span{font-size:12px;color:var(--muted)}.flow-result strong{font-size:17px;overflow-wrap:anywhere}.flow-error{color:#ed8b8b;min-height:1.4em;font-size:13px}.flow-fields input:disabled{opacity:.68}.flow-fields input{min-width:0}@media(max-width:540px){.flow-fields,.flow-results{grid-template-columns:1fr}}
+
+/* Flow: visually separate fixed configuration from bidirectional measurements */
+.flow-config-panel {
+    margin: 20px 0 24px;
+    padding: 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    background: var(--surface);
+}
+.flow-config-panel h2 { margin-top: 0; }
+.flow-config-panel .flow-fields { margin-bottom: 0; }
+.flow-section-hint { color: var(--muted); font-size: 12px; margin: 4px 0 12px; }
