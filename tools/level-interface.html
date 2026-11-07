@@ -1,358 +1,304 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Interface Level | LazyLoop
-    </title>
+    <title>Interface Level | LazyLoop</title>
 
     <script src="../theme.js"></script>
-
-    <link
-        rel="stylesheet"
-        href="../style.css"
-    >
-
-    </head>
+    <link rel="stylesheet" href="../style.css">
+</head>
 
 <body class="level-calculator-page">
 
     <main class="container">
 
-        <a
-            class="back-link"
-            href="level.html"
-        >
+        <a class="back-link" href="level.html">
             ‹ Level
         </a>
 
         <header class="main-header">
-
             <h1>Interface Level</h1>
-
-            <p>
-                DP interface measurement between two liquids
-            </p>
-
+            <p>DP interface measurement between two liquids</p>
         </header>
 
         <section class="calculator-card">
 
-           <div class="standard-info">
-    <strong>
-        Interface Level
+            <div class="standard-info">
+                <strong>
+                    Interface Level
 
-        <button
-            class="help-button"
-            id="interfaceHelpButton"
-            type="button"
-            aria-label="Explain interface level measurement"
-        >
-            ?
-        </button>
-    </strong>
+                    <button
+                        class="help-button"
+                        id="interfaceHelpButton"
+                        type="button"
+                        aria-label="Explain interface level measurement"
+                    >?</button>
+                </strong>
+                <br>
+                Transmitter = 0 cm · Above = + · Below = −
+            </div>
 
-    <br>
+            <h2>Measurement Range</h2>
 
-    Transmitter = 0 cm · Above = + · Below = −
-</div>
-<h2>Measurement Range</h2>
+            <div class="engineering-grid">
 
-<div class="engineering-grid">
+                <label>
+                    0% Interface Height
+                    <div class="value-input">
+                        <input
+                            id="zeroHeight"
+                            type="text"
+                            value="50"
+                            inputmode="decimal"
+                            data-signed
+                        >
+                        <span>cm</span>
+                    </div>
+                </label>
 
-    <label>
-        0% Interface Height
-        <div class="value-input">
-            <input
-                id="zeroHeight"
-                type="number"
-                value="50"
-                step="any"
-                inputmode="decimal"
-                        data-signed
-            >
-            <span>cm</span>
-        </div>
-    </label>
+                <label>
+                    100% Interface Height
+                    <div class="value-input">
+                        <input
+                            id="fullHeight"
+                            type="text"
+                            value="500"
+                            inputmode="decimal"
+                            data-signed
+                        >
+                        <span>cm</span>
+                    </div>
+                </label>
 
-    <label>
-        100% Interface Height
-        <div class="value-input">
-            <input
-                id="fullHeight"
-                type="number"
-                value="500"
-                step="any"
-                inputmode="decimal"
-                        data-signed
-            >
-            <span>cm</span>
-        </div>
-    </label>
+                <div class="calculated-field">
+                    <label>Geometric Span</label>
+                    <div class="calculated-value">
+                        <span id="geometricSpan">450</span>
+                        <span>cm</span>
+                    </div>
+                </div>
 
-    <div class="calculated-field">
-        <label>
-            Geometric Span
-        </label>
+            </div>
 
-        <div class="calculated-value">
-            <span id="geometricSpan">450</span>
-            <span>cm</span>
-        </div>
-    </div>
+            <div class="divider"></div>
 
-</div>
-<div class="divider"></div>
+            <h2>Vessel Geometry</h2>
 
-<h2>Vessel Geometry</h2>
+            <div class="engineering-grid">
+                <label>
+                    Upper Process Tap Height
+                    <div class="value-input">
+                        <input
+                            id="upperTapHeight"
+                            type="text"
+                            value="550"
+                            inputmode="decimal"
+                            data-signed
+                        >
+                        <span>cm</span>
+                    </div>
+                </label>
+            </div>
 
-<div class="engineering-grid">
+            <div class="divider"></div>
 
-    <label>
-        Upper Process Tap Height
-        <div class="value-input">
-            <input
-                id="upperTapHeight"
-                type="number"
-                value="550"
-                step="any"
-                inputmode="decimal"
-                        data-signed
-            >
-            <span>cm</span>
-        </div>
-    </label>
+            <h2>Upper Liquid</h2>
 
-</div>
-<div class="divider"></div>
+            <div class="engineering-grid">
 
-<h2>Upper Liquid</h2>
+                <label>
+                    Density
+                    <div class="value-input">
+                        <input
+                            id="upperDensity"
+                            type="text"
+                            value="830"
+                            inputmode="decimal"
+                        >
+                        <span>kg/m³</span>
+                    </div>
+                </label>
 
-<div class="engineering-grid">
+                <label>
+                    Specific Gravity
+                    <input
+                        id="upperSG"
+                        type="text"
+                        value="0.83"
+                        inputmode="decimal"
+                    >
+                </label>
 
-    <label>
-        Density
-        <div class="value-input">
-            <input
-                id="upperDensity"
-                type="number"
-                value="830"
-                step="any"
-                inputmode="decimal"
-            >
-            <span>kg/m³</span>
-        </div>
-    </label>
+            </div>
 
-    <label>
-        Specific Gravity
-        <input
-            id="upperSG"
-            type="number"
-            value="0.83"
-            step="any"
-            inputmode="decimal"
-        >
-    </label>
+            <div class="divider"></div>
 
-</div>
+            <h2>Lower Liquid</h2>
 
-<div class="divider"></div>
+            <div class="engineering-grid">
 
-<h2>Lower Liquid</h2>
+                <label>
+                    Density
+                    <div class="value-input">
+                        <input
+                            id="lowerDensity"
+                            type="text"
+                            value="1000"
+                            inputmode="decimal"
+                        >
+                        <span>kg/m³</span>
+                    </div>
+                </label>
 
-<div class="engineering-grid">
+                <label>
+                    Specific Gravity
+                    <input
+                        id="lowerSG"
+                        type="text"
+                        value="1"
+                        inputmode="decimal"
+                    >
+                </label>
 
-    <label>
-        Density
-        <div class="value-input">
-            <input
-                id="lowerDensity"
-                type="number"
-                value="1000"
-                step="any"
-                inputmode="decimal"
-            >
-            <span>kg/m³</span>
-        </div>
-    </label>
+            </div>
 
-    <label>
-        Specific Gravity
-        <input
-            id="lowerSG"
-            type="number"
-            value="1"
-            step="any"
-            inputmode="decimal"
-        >
-    </label>
+            <div class="divider"></div>
 
-</div>
-<div class="divider"></div>
+            <h2>Reference Leg</h2>
 
-<h2>Reference Leg</h2>
+            <div class="engineering-grid">
 
-<div class="engineering-grid">
+                <label>
+                    Upper Reference Tap Height
+                    <div class="value-input">
+                        <input
+                            id="referenceHeight"
+                            type="text"
+                            value="550"
+                            inputmode="decimal"
+                            data-signed
+                        >
+                        <span>cm</span>
+                    </div>
+                </label>
 
-    <label>
-        Upper Reference Tap Height
-        <div class="value-input">
-            <input
-                id="referenceHeight"
-                type="number"
-                value="550"
-                step="any"
-                inputmode="decimal"
-                        data-signed
-            >
-            <span>cm</span>
-        </div>
-    </label>
+                <label>
+                    Wet Leg Density
+                    <div class="value-input">
+                        <input
+                            id="wetLegDensity"
+                            type="text"
+                            value="1000"
+                            inputmode="decimal"
+                        >
+                        <span>kg/m³</span>
+                    </div>
+                </label>
 
-    <label>
-        Wet Leg Density
-        <div class="value-input">
-            <input
-                id="wetLegDensity"
-                type="number"
-                value="1000"
-                step="any"
-                inputmode="decimal"
-            >
-            <span>kg/m³</span>
-        </div>
-    </label>
+                <label>
+                    Wet Leg SG
+                    <input
+                        id="wetLegSG"
+                        type="text"
+                        value="1"
+                        inputmode="decimal"
+                    >
+                </label>
 
-    <label>
-        Wet Leg SG
-        <input
-            id="wetLegSG"
-            type="number"
-            value="1"
-            step="any"
-            inputmode="decimal"
-        >
-    </label>
+            </div>
 
-</div>
+            <div
+                id="rangeWarning"
+                class="range-warning"
+                hidden
+            ></div>
 
-<div
-    id="rangeWarning"
-    class="range-warning"
-    hidden
-></div>
-<div class="divider"></div>
+            <div class="divider"></div>
 
-<h2>Transmitter Range</h2>
+            <h2>Transmitter Range</h2>
 
-<div class="pt100-reference">
+            <div class="pt100-reference">
 
-    <div class="reference-item">
-        <span class="reference-temperature">
-            LRV
-        </span>
+                <div class="reference-item">
+                    <span class="reference-temperature">
+                        LRV
+                    </span>
+                    <span
+                        id="lrv"
+                        class="reference-resistance"
+                    >—</span>
+                </div>
 
-        <span
-            id="lrv"
-            class="reference-resistance"
-        >
-            —
-        </span>
-    </div>
+                <div class="reference-item">
+                    <span class="reference-temperature">
+                        URV
+                    </span>
+                    <span
+                        id="urv"
+                        class="reference-resistance"
+                    >—</span>
+                </div>
 
-    <div class="reference-item">
-        <span class="reference-temperature">
-            URV
-        </span>
+                <div class="reference-item">
+                    <span class="reference-temperature">
+                        Span
+                    </span>
+                    <span
+                        id="span"
+                        class="reference-resistance"
+                    >—</span>
+                </div>
 
-        <span
-            id="urv"
-            class="reference-resistance"
-        >
-            —
-        </span>
-    </div>
+            </div>
 
-    <div class="reference-item">
-        <span class="reference-temperature">
-            Span
-        </span>
+            <div class="divider"></div>
 
-        <span
-            id="span"
-            class="reference-resistance"
-        >
-            —
-        </span>
-    </div>
+            <h2>Interface Sensitivity</h2>
 
-</div>
+            <div class="pt100-reference">
+                <div class="reference-item">
+                    <span class="reference-temperature">
+                        DP Change
+                    </span>
+                    <span
+                        id="sensitivity"
+                        class="reference-resistance"
+                    >—</span>
+                </div>
+            </div>
 
-<div class="divider"></div>
+            <p class="range-note">
+                Hydrostatic calculation · P = ρgh
+            </p>
 
-<h2>Interface Sensitivity</h2>
-
-<div class="pt100-reference">
-
-    <div class="reference-item">
-        <span class="reference-temperature">
-            DP Change
-        </span>
-
-        <span
-            id="sensitivity"
-            class="reference-resistance"
-        >
-            —
-        </span>
-    </div>
-
-</div>
-
-<p class="range-note">
-    Hydrostatic calculation · P = ρgh
-</p>
         </section>
-
     </main>
 
-    <div
-    class="help-overlay"
-    id="interfaceHelp"
->
+    <div class="help-overlay" id="interfaceHelp">
+        <div class="help-overlay-content">
 
-    <div class="help-overlay-content">
+            <button
+                class="help-close"
+                id="interfaceHelpClose"
+                type="button"
+                aria-label="Close help"
+            >×</button>
 
-        <button
-            class="help-close"
-            id="interfaceHelpClose"
-            type="button"
-            aria-label="Close help"
-        >
-            ×
-        </button>
+            <img
+                src="images/interface-help.png"
+                alt="Interface level measurement diagram"
+            >
 
-        <img
-            src="images/interface-help.png"
-            alt="Interface level measurement diagram"
-        >
-
+        </div>
     </div>
 
-</div>
-
+    <script src="../input-utils.js"></script>
     <script src="level-interface.js"></script>
 
 </body>
-
 </html>

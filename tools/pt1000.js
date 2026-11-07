@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     Pt1000 Calculator
@@ -50,17 +51,14 @@ const temperature =
 function temperatureToResistance() {
 
     const t =
-        Number(temperature.value);
-
+        parseInput(temperature.value);
 
     if (!Number.isFinite(t)) {
         return;
     }
 
-
     const r =
         resistanceFromTemperature(t);
-
 
     resistance.value =
         formatResistance(r);
@@ -74,13 +72,11 @@ function temperatureToResistance() {
 function resistanceToTemperature() {
 
     const r =
-        Number(resistance.value);
-
+        parseInput(resistance.value);
 
     if (!Number.isFinite(r)) {
         return;
     }
-
 
     const minimumResistance =
         resistanceFromTemperature(MIN_TEMP);
@@ -88,10 +84,9 @@ function resistanceToTemperature() {
     const maximumResistance =
         resistanceFromTemperature(MAX_TEMP);
 
-
     /*
-        Do not invent a temperature outside the
-        supported IEC calculation range.
+        Do not calculate temperatures outside
+        the supported IEC 60751 range.
     */
 
     if (
@@ -100,14 +95,11 @@ function resistanceToTemperature() {
     ) {
 
         temperature.value = "";
-
         return;
     }
 
-
     const t =
         temperatureFromResistance(r);
-
 
     temperature.value =
         formatTemperature(t);
@@ -122,10 +114,10 @@ function resistanceToTemperature() {
 function resistanceFromTemperature(t) {
 
     /*
-        At and above 0 °C:
+        IEC 60751:
+        At and above 0 °C
 
-        R(t) = R0 ×
-        (1 + A·t + B·t²)
+        R(t) = R0 × (1 + A·t + B·t²)
     */
 
     if (t >= 0) {
@@ -137,22 +129,19 @@ function resistanceFromTemperature(t) {
         );
     }
 
-
     /*
-        Below 0 °C the C term is required:
+        IEC 60751:
+        Below 0 °C
 
         R(t) = R0 ×
-        [1 + A·t + B·t²
-        + C·(t - 100)·t³]
+        [1 + A·t + B·t² + C·(t-100)·t³]
     */
 
     return R0 * (
         1 +
         A * t +
         B * t * t +
-        C *
-        (t - 100) *
-        t * t * t
+        C * (t - 100) * t * t * t
     );
 }
 
@@ -164,27 +153,18 @@ function resistanceFromTemperature(t) {
 function temperatureFromResistance(r) {
 
     /*
-        For positive temperatures the IEC equation
-        is quadratic and could be inverted directly.
+        Numerical inversion using bisection.
 
-        Below zero the equation contains the C term
-        and becomes fourth-order.
+        The IEC 60751 resistance curve is
+        monotonic over the supported range.
 
-        Using one numerical solver for the complete
-        range keeps both directions consistent with
-        the same IEC equation.
-
-        Pt1000 resistance is monotonic throughout
-        this range, so bisection is robust.
+        Bisection therefore provides a robust
+        solution for both positive and negative
+        temperatures.
     */
 
-
-    let low =
-        MIN_TEMP;
-
-    let high =
-        MAX_TEMP;
-
+    let low = MIN_TEMP;
+    let high = MAX_TEMP;
 
     for (let i = 0; i < 80; i++) {
 
@@ -194,20 +174,15 @@ function temperatureFromResistance(r) {
         const middleResistance =
             resistanceFromTemperature(middle);
 
-
         if (middleResistance < r) {
 
-            low =
-                middle;
-        }
+            low = middle;
 
-        else {
+        } else {
 
-            high =
-                middle;
+            high = middle;
         }
     }
-
 
     return (low + high) / 2;
 }
@@ -242,7 +217,6 @@ resistance.addEventListener(
     resistanceToTemperature
 );
 
-
 temperature.addEventListener(
     "input",
     temperatureToResistance
@@ -254,3 +228,4 @@ temperature.addEventListener(
 // --------------------------------------------------
 
 temperatureToResistance();
+

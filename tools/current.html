@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -7,7 +8,7 @@
 
     <title>4–20 mA | LazyLoop</title>
 
-        <script src="../theme.js"></script>
+    <script src="../theme.js"></script>
 
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -25,7 +26,6 @@
             <p>Current signal scaling</p>
         </header>
 
-
         <section class="calculator-card">
 
             <h2>Engineering Range</h2>
@@ -36,9 +36,8 @@
                     Low
                     <input
                         id="engineeringLow"
-                        type="number"
+                        type="text"
                         value="0"
-                        step="any"
                         inputmode="decimal"
                         data-signed
                     >
@@ -48,9 +47,8 @@
                     High
                     <input
                         id="engineeringHigh"
-                        type="number"
+                        type="text"
                         value="100"
-                        step="any"
                         inputmode="decimal"
                         data-signed
                     >
@@ -68,9 +66,7 @@
 
             </div>
 
-
             <div class="divider"></div>
-
 
             <div class="conversion">
 
@@ -82,9 +78,8 @@
 
                         <input
                             id="current"
-                            type="number"
+                            type="text"
                             value="12"
-                            step="any"
                             inputmode="decimal"
                         >
 
@@ -94,11 +89,9 @@
 
                 </div>
 
-
                 <div class="conversion-arrow">
                     ⇄
                 </div>
-
 
                 <div>
 
@@ -108,11 +101,10 @@
 
                         <input
                             id="processValue"
-                            type="number"
+                            type="text"
                             value="50"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span id="processUnit">bar</span>
@@ -123,11 +115,9 @@
 
             </div>
 
-
             <div class="percent">
                 <span id="percent">50.00</span> %
             </div>
-
 
             <div class="signal-section">
 
@@ -138,7 +128,6 @@
                         <span class="region-normal">NORMAL RANGE</span>
                         <span class="region-high">OVER / FAIL</span>
                     </div>
-
 
                     <div class="signal-bar">
 
@@ -155,30 +144,19 @@
 
                     </div>
 
-
                     <div class="nominal-scale">
 
-                        <span class="scale-low">
-                            4
-                        </span>
-
-                        <span class="scale-middle">
-                            12
-                        </span>
-
-                        <span class="scale-high">
-                            20
-                        </span>
+                        <span class="scale-low">4</span>
+                        <span class="scale-middle">12</span>
+                        <span class="scale-high">20</span>
 
                     </div>
-
 
                     <div class="signal-unit">
                         mA
                     </div>
 
                 </div>
-
 
                 <div
                     id="signalStatus"
@@ -193,7 +171,7 @@
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="current.js"></script>
 
 </body>

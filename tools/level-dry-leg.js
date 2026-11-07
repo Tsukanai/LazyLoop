@@ -1,12 +1,19 @@
+
 /*
     LazyLoop
-    Atmospheric / Vented Level
+    Closed Vessel - Dry Leg
 
     Fundamental sign convention:
 
         Transmitter = 0
         Above transmitter = positive
         Below transmitter = negative
+
+    Dry leg assumption:
+
+        The reference leg contains gas only.
+        Vessel pressure cancels across the
+        differential pressure transmitter.
 
     Hydrostatic pressure:
 
@@ -96,13 +103,13 @@ function pressureFromHeight(
 function calculateRange() {
 
     const zero =
-        Number(zeroHeight.value);
+        parseInput(zeroHeight.value);
 
     const full =
-        Number(fullHeight.value);
+        parseInput(fullHeight.value);
 
     const rho =
-        Number(density.value);
+        parseInput(density.value);
 
 
     if (
@@ -112,11 +119,14 @@ function calculateRange() {
     ) {
         return;
     }
-const levelSpan =
-    full - zero;
 
-geometricSpan.textContent =
-    formatHeight(levelSpan);
+
+    const levelSpan =
+        full - zero;
+
+    geometricSpan.textContent =
+        formatHeight(levelSpan);
+
 
     const lowPressure =
         pressureFromHeight(
@@ -160,7 +170,7 @@ geometricSpan.textContent =
 function densityToSG() {
 
     const rho =
-        Number(density.value);
+        parseInput(density.value);
 
 
     if (!Number.isFinite(rho)) {
@@ -186,7 +196,7 @@ function densityToSG() {
 function sgToDensity() {
 
     const sg =
-        Number(specificGravity.value);
+        parseInput(specificGravity.value);
 
 
     if (!Number.isFinite(sg)) {
@@ -215,6 +225,7 @@ function formatPressure(value) {
         value.toFixed(2)
     ).toString();
 }
+
 
 function formatHeight(value) {
 

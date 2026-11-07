@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     Type K Thermocouple Calculator
@@ -15,6 +16,9 @@
     For an arbitrary cold-junction temperature:
 
         Emeasured = Ehot - Ecold
+
+    Numeric input accepts decimal comma or point
+    through the shared parseInput() function.
 */
 
 
@@ -109,10 +113,10 @@ const emfDisplay =
 function temperatureToEmf() {
 
     const hotTemperature =
-        Number(temperature.value);
+        parseInput(temperature.value);
 
     const coldTemperature =
-        Number(coldJunction.value);
+        parseInput(coldJunction.value);
 
 
     if (
@@ -162,10 +166,10 @@ function temperatureToEmf() {
 function emfToTemperature() {
 
     const measuredEmf =
-        Number(emf.value);
+        parseInput(emf.value);
 
     const coldTemperature =
-        Number(coldJunction.value);
+        parseInput(coldJunction.value);
 
 
     if (
@@ -309,9 +313,7 @@ function referenceEmf(t) {
 // --------------------------------------------------
 // Reference EMF -> temperature
 //
-// The Type K reference function is monotonic over
-// the supported range, so bisection gives a robust
-// inverse without requiring a separate approximation.
+// Bisection solver for the supported range.
 // --------------------------------------------------
 
 function temperatureFromReferenceEmf(
@@ -359,6 +361,7 @@ function temperatureFromReferenceEmf(
 function temperatureIsValid(t) {
 
     return (
+        Number.isFinite(t) &&
         t >= MIN_TEMP &&
         t <= MAX_TEMP
     );
@@ -372,23 +375,23 @@ function temperatureIsValid(t) {
 function updateDisplays() {
 
     const cold =
-        Number(coldJunction.value);
+        parseInput(coldJunction.value);
 
     const hot =
-        Number(temperature.value);
+        parseInput(temperature.value);
 
     const measured =
-        Number(emf.value);
+        parseInput(emf.value);
 
 
     cjcDisplay.textContent =
-        Number.isFinite(cold)
+        temperatureIsValid(cold)
             ? formatTemperature(cold) + " °C"
             : "—";
 
 
     hotDisplay.textContent =
-        Number.isFinite(hot)
+        temperatureIsValid(hot)
             ? formatTemperature(hot) + " °C"
             : "—";
 

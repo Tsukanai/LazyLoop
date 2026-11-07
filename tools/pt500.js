@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     Pt500 Calculator
@@ -50,7 +51,7 @@ const temperature =
 function temperatureToResistance() {
 
     const t =
-        Number(temperature.value);
+        parseInput(temperature.value);
 
 
     if (!Number.isFinite(t)) {
@@ -74,7 +75,7 @@ function temperatureToResistance() {
 function resistanceToTemperature() {
 
     const r =
-        Number(resistance.value);
+        parseInput(resistance.value);
 
 
     if (!Number.isFinite(r)) {

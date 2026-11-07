@@ -1,14 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Type N Thermocouple | LazyLoop</title>
 
     <script src="../theme.js"></script>
-
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -21,18 +22,17 @@
         </a>
 
         <header class="main-header">
-            <h1>Thermocouple (E)</h1>
+            <h1>Thermocouple (N)</h1>
             <p>EMF ⇄ Temperature</p>
         </header>
-
 
         <section class="calculator-card">
 
             <div class="standard-info">
-                <strong>Type N · ITS-90</strong><br>
+                <strong>Type N · ITS-90</strong>
+                <br>
                 NIST reference function
             </div>
-
 
             <h2>Cold Junction / Reference</h2>
 
@@ -40,9 +40,8 @@
 
                 <input
                     id="coldJunction"
-                    type="number"
+                    type="text"
                     value="0"
-                    step="any"
                     inputmode="decimal"
                     data-signed
                 >
@@ -51,9 +50,7 @@
 
             </div>
 
-
             <div class="divider"></div>
-
 
             <div class="conversion">
 
@@ -65,9 +62,8 @@
 
                         <input
                             id="emf"
-                            type="number"
-                            value="6.319"
-                            step="any"
+                            type="text"
+                            value="2.7741"
                             inputmode="decimal"
                             data-signed
                         >
@@ -78,11 +74,9 @@
 
                 </div>
 
-
                 <div class="conversion-arrow">
                     ⇄
                 </div>
-
 
                 <div>
 
@@ -92,9 +86,8 @@
 
                         <input
                             id="temperature"
-                            type="number"
+                            type="text"
                             value="100"
-                            step="any"
                             inputmode="decimal"
                             data-signed
                         >
@@ -106,7 +99,6 @@
                 </div>
 
             </div>
-
 
             <div class="pt100-reference">
 
@@ -125,7 +117,6 @@
 
                 </div>
 
-
                 <div class="reference-item">
 
                     <span class="reference-temperature">
@@ -141,7 +132,6 @@
 
                 </div>
 
-
                 <div class="reference-item">
 
                     <span class="reference-temperature">
@@ -152,37 +142,49 @@
                         id="emfDisplay"
                         class="reference-resistance"
                     >
-                        6.319 mV
+                        2.7741 mV
                     </span>
 
                 </div>
 
             </div>
 
+            <div
+                class="tc-materials"
+                aria-label="Thermocouple conductor materials"
+            >
 
-            <div class="tc-materials" aria-label="Thermocouple conductor materials">
                 <h2>Conductor materials</h2>
+
                 <div class="tc-materials-grid">
+
                     <div>
-                        <span class="tc-material-label">Positive (+)</span>
+                        <span class="tc-material-label">
+                            Positive (+)
+                        </span>
                         <strong>Nicrosil</strong>
                     </div>
+
                     <div>
-                        <span class="tc-material-label">Negative (−)</span>
+                        <span class="tc-material-label">
+                            Negative (−)
+                        </span>
                         <strong>Nisil</strong>
                     </div>
+
                 </div>
+
             </div>
 
             <p class="range-note">
-                Type N ITS-90 · -270 to +1300 °C
+                Type N ITS-90 · −270 to +1300 °C
             </p>
 
         </section>
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="type-n.js"></script>
 
 </body>

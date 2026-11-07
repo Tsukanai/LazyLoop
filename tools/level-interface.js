@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     Interface Level
@@ -16,14 +17,9 @@
 // Constants
 // --------------------------------------------------
 
-const GRAVITY =
-    9.80665;
-
-const WATER_REFERENCE_DENSITY =
-    1000;
-
-const PA_PER_MBAR =
-    100;
+const GRAVITY = 9.80665;
+const WATER_REFERENCE_DENSITY = 1000;
+const PA_PER_MBAR = 100;
 
 
 // --------------------------------------------------
@@ -42,20 +38,17 @@ const geometricSpan =
 const upperTapHeight =
     document.getElementById("upperTapHeight");
 
-
 const upperDensity =
     document.getElementById("upperDensity");
 
 const upperSG =
     document.getElementById("upperSG");
 
-
 const lowerDensity =
     document.getElementById("lowerDensity");
 
 const lowerSG =
     document.getElementById("lowerSG");
-
 
 const referenceHeight =
     document.getElementById("referenceHeight");
@@ -65,7 +58,6 @@ const wetLegDensity =
 
 const wetLegSG =
     document.getElementById("wetLegSG");
-
 
 const lrv =
     document.getElementById("lrv");
@@ -82,7 +74,8 @@ const sensitivity =
 const rangeWarning =
     document.getElementById("rangeWarning");
 
-    // --------------------------------------------------
+
+// --------------------------------------------------
 // Hydrostatic calculation
 // --------------------------------------------------
 
@@ -99,12 +92,9 @@ function pressureFromHeight(
         GRAVITY *
         heightMetres;
 
-    const pressureMbar =
-        pressurePa /
-        PA_PER_MBAR;
-
-    return pressureMbar;
+    return pressurePa / PA_PER_MBAR;
 }
+
 
 // --------------------------------------------------
 // Process pressure at an interface position
@@ -121,8 +111,7 @@ function processPressureAtInterface(
         interfaceHeight;
 
     const upperLiquidHeight =
-        upperTap -
-        interfaceHeight;
+        upperTap - interfaceHeight;
 
     const lowerLiquidPressure =
         pressureFromHeight(
@@ -142,6 +131,7 @@ function processPressureAtInterface(
     );
 }
 
+
 // --------------------------------------------------
 // Calculate transmitter range
 // --------------------------------------------------
@@ -149,28 +139,32 @@ function processPressureAtInterface(
 function calculateRange() {
 
     const zero =
-        Number(zeroHeight.value);
+        parseInput(zeroHeight.value);
 
     const full =
-        Number(fullHeight.value);
+        parseInput(fullHeight.value);
 
     const upperTap =
-        Number(upperTapHeight.value);
+        parseInput(upperTapHeight.value);
 
     const upperRho =
-        Number(upperDensity.value);
+        parseInput(upperDensity.value);
 
     const lowerRho =
-        Number(lowerDensity.value);
+        parseInput(lowerDensity.value);
 
     const reference =
-        Number(referenceHeight.value);
+        parseInput(referenceHeight.value);
 
     const referenceRho =
-        Number(wetLegDensity.value);
+        parseInput(wetLegDensity.value);
 
-    const warnings =
-    validateInputs(
+
+    // --------------------------------------------------
+    // Physical arrangement warnings
+    // --------------------------------------------------
+
+    const warnings = validateInputs(
         zero,
         full,
         upperTap,
@@ -179,22 +173,23 @@ function calculateRange() {
         referenceRho
     );
 
-if (warnings.length > 0) {
+    if (warnings.length > 0) {
 
-    rangeWarning.textContent =
-        warnings.join(" ");
+        rangeWarning.textContent =
+            warnings.join(" ");
 
-    rangeWarning.hidden =
-        false;
+        rangeWarning.hidden = false;
 
-} else {
+    } else {
 
-    rangeWarning.textContent =
-        "";
+        rangeWarning.textContent = "";
+        rangeWarning.hidden = true;
+    }
 
-    rangeWarning.hidden =
-        true;
-}
+
+    // --------------------------------------------------
+    // Geometric span
+    // --------------------------------------------------
 
     const levelSpan =
         full - zero;
@@ -202,6 +197,10 @@ if (warnings.length > 0) {
     geometricSpan.textContent =
         formatHeight(levelSpan);
 
+
+    // --------------------------------------------------
+    // Process pressures
+    // --------------------------------------------------
 
     const lowProcessPressure =
         processPressureAtInterface(
@@ -220,12 +219,20 @@ if (warnings.length > 0) {
         );
 
 
+    // --------------------------------------------------
+    // Reference leg pressure
+    // --------------------------------------------------
+
     const referencePressure =
         pressureFromHeight(
             reference,
             referenceRho
         );
 
+
+    // --------------------------------------------------
+    // Differential pressures
+    // --------------------------------------------------
 
     const lowDP =
         lowProcessPressure -
@@ -235,11 +242,13 @@ if (warnings.length > 0) {
         highProcessPressure -
         referencePressure;
 
-
     const pressureSpan =
-        highDP -
-        lowDP;
+        highDP - lowDP;
 
+
+    // --------------------------------------------------
+    // Interface sensitivity
+    // --------------------------------------------------
 
     const sensitivityMbarPerMetre =
         pressureFromHeight(
@@ -248,24 +257,25 @@ if (warnings.length > 0) {
         );
 
 
+    // --------------------------------------------------
+    // Display results
+    // --------------------------------------------------
+
     lrv.textContent =
-        formatPressure(lowDP) +
-        " mbar";
+        formatPressure(lowDP) + " mbar";
 
     urv.textContent =
-        formatPressure(highDP) +
-        " mbar";
+        formatPressure(highDP) + " mbar";
 
     span.textContent =
-        formatPressure(pressureSpan) +
-        " mbar";
+        formatPressure(pressureSpan) + " mbar";
 
     sensitivity.textContent =
         formatPressure(
             sensitivityMbarPerMetre
-        ) +
-        " mbar/m";
+        ) + " mbar/m";
 }
+
 
 // --------------------------------------------------
 // Formatting
@@ -302,6 +312,7 @@ function formatSG(value) {
     ).toString();
 }
 
+
 // --------------------------------------------------
 // Upper liquid density <-> SG
 // --------------------------------------------------
@@ -309,7 +320,7 @@ function formatSG(value) {
 function upperDensityToSG() {
 
     const rho =
-        Number(upperDensity.value);
+        parseInput(upperDensity.value);
 
     if (!Number.isFinite(rho)) {
         return;
@@ -317,8 +328,7 @@ function upperDensityToSG() {
 
     upperSG.value =
         formatSG(
-            rho /
-            WATER_REFERENCE_DENSITY
+            rho / WATER_REFERENCE_DENSITY
         );
 
     calculateRange();
@@ -328,7 +338,7 @@ function upperDensityToSG() {
 function upperSGToDensity() {
 
     const sg =
-        Number(upperSG.value);
+        parseInput(upperSG.value);
 
     if (!Number.isFinite(sg)) {
         return;
@@ -336,8 +346,7 @@ function upperSGToDensity() {
 
     upperDensity.value =
         formatDensity(
-            sg *
-            WATER_REFERENCE_DENSITY
+            sg * WATER_REFERENCE_DENSITY
         );
 
     calculateRange();
@@ -351,7 +360,7 @@ function upperSGToDensity() {
 function lowerDensityToSG() {
 
     const rho =
-        Number(lowerDensity.value);
+        parseInput(lowerDensity.value);
 
     if (!Number.isFinite(rho)) {
         return;
@@ -359,8 +368,7 @@ function lowerDensityToSG() {
 
     lowerSG.value =
         formatSG(
-            rho /
-            WATER_REFERENCE_DENSITY
+            rho / WATER_REFERENCE_DENSITY
         );
 
     calculateRange();
@@ -370,7 +378,7 @@ function lowerDensityToSG() {
 function lowerSGToDensity() {
 
     const sg =
-        Number(lowerSG.value);
+        parseInput(lowerSG.value);
 
     if (!Number.isFinite(sg)) {
         return;
@@ -378,8 +386,7 @@ function lowerSGToDensity() {
 
     lowerDensity.value =
         formatDensity(
-            sg *
-            WATER_REFERENCE_DENSITY
+            sg * WATER_REFERENCE_DENSITY
         );
 
     calculateRange();
@@ -393,7 +400,7 @@ function lowerSGToDensity() {
 function wetLegDensityToSG() {
 
     const rho =
-        Number(wetLegDensity.value);
+        parseInput(wetLegDensity.value);
 
     if (!Number.isFinite(rho)) {
         return;
@@ -401,8 +408,7 @@ function wetLegDensityToSG() {
 
     wetLegSG.value =
         formatSG(
-            rho /
-            WATER_REFERENCE_DENSITY
+            rho / WATER_REFERENCE_DENSITY
         );
 
     calculateRange();
@@ -412,7 +418,7 @@ function wetLegDensityToSG() {
 function wetLegSGToDensity() {
 
     const sg =
-        Number(wetLegSG.value);
+        parseInput(wetLegSG.value);
 
     if (!Number.isFinite(sg)) {
         return;
@@ -420,12 +426,12 @@ function wetLegSGToDensity() {
 
     wetLegDensity.value =
         formatDensity(
-            sg *
-            WATER_REFERENCE_DENSITY
+            sg * WATER_REFERENCE_DENSITY
         );
 
     calculateRange();
 }
+
 
 // --------------------------------------------------
 // Event listeners
@@ -446,7 +452,6 @@ upperTapHeight.addEventListener(
     calculateRange
 );
 
-
 upperDensity.addEventListener(
     "input",
     upperDensityToSG
@@ -457,7 +462,6 @@ upperSG.addEventListener(
     upperSGToDensity
 );
 
-
 lowerDensity.addEventListener(
     "input",
     lowerDensityToSG
@@ -467,7 +471,6 @@ lowerSG.addEventListener(
     "input",
     lowerSGToDensity
 );
-
 
 referenceHeight.addEventListener(
     "input",
@@ -483,6 +486,7 @@ wetLegSG.addEventListener(
     "input",
     wetLegSGToDensity
 );
+
 
 // --------------------------------------------------
 // Validate physical arrangement
@@ -530,6 +534,7 @@ function validateInputs(
     return warnings;
 }
 
+
 // --------------------------------------------------
 // Help overlay
 // --------------------------------------------------
@@ -554,9 +559,7 @@ interfaceHelpButton.addEventListener(
     "click",
     function () {
 
-        interfaceHelp.classList.add(
-            "open"
-        );
+        interfaceHelp.classList.add("open");
     }
 );
 
@@ -565,10 +568,13 @@ interfaceHelpClose.addEventListener(
     "click",
     function () {
 
-        interfaceHelp.classList.remove(
-            "open"
-        );
+        interfaceHelp.classList.remove("open");
     }
 );
+
+
+// --------------------------------------------------
+// Initial calculation
+// --------------------------------------------------
 
 calculateRange();

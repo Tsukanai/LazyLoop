@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -7,7 +8,7 @@
 
     <title>Pressure / Head | LazyLoop</title>
 
-        <script src="../theme.js"></script>
+    <script src="../theme.js"></script>
 
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -20,7 +21,6 @@
             ‹ Pressure
         </a>
 
-
         <header class="main-header">
 
             <h1>Pressure / Head</h1>
@@ -31,9 +31,7 @@
 
         </header>
 
-
         <section class="calculator-card">
-
 
             <div class="standard-info">
 
@@ -43,9 +41,7 @@
 
             </div>
 
-
             <div class="conversion">
-
 
                 <div>
 
@@ -55,11 +51,10 @@
 
                         <input
                             id="pressure"
-                            type="number"
+                            type="text"
                             value="0.980665"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>bar</span>
@@ -68,11 +63,9 @@
 
                 </div>
 
-
                 <div class="conversion-arrow">
                     ⇄
                 </div>
-
 
                 <div>
 
@@ -82,11 +75,10 @@
 
                         <input
                             id="head"
-                            type="number"
+                            type="text"
                             value="10"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>m</span>
@@ -95,18 +87,13 @@
 
                 </div>
 
-
             </div>
-
 
             <div class="divider"></div>
 
-
             <h2>Liquid Properties</h2>
 
-
             <div class="engineering-grid pressure-properties">
-
 
                 <label>
                     Density
@@ -115,9 +102,8 @@
 
                         <input
                             id="density"
-                            type="number"
+                            type="text"
                             value="1000"
-                            step="any"
                             inputmode="decimal"
                         >
 
@@ -127,34 +113,29 @@
 
                 </label>
 
-
                 <label>
                     Specific Gravity
 
                     <input
                         id="specificGravity"
-                        type="number"
+                        type="text"
                         value="1"
-                        step="any"
                         inputmode="decimal"
                     >
 
                 </label>
 
-
             </div>
-
 
             <p class="range-note">
                 Density and SG referenced to 1000 kg/m³
             </p>
 
-
         </section>
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="pressure-head.js"></script>
 
 </body>

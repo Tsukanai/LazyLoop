@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -7,7 +8,7 @@
 
     <title>Pt1000 | LazyLoop</title>
 
-        <script src="../theme.js"></script>
+    <script src="../theme.js"></script>
 
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -20,7 +21,6 @@
             ‹ RTD
         </a>
 
-
         <header class="main-header">
 
             <h1>Pt1000</h1>
@@ -31,9 +31,7 @@
 
         </header>
 
-
         <section class="calculator-card">
-
 
             <div class="standard-info">
 
@@ -43,9 +41,7 @@
 
             </div>
 
-
             <div class="conversion">
-
 
                 <div>
 
@@ -57,9 +53,8 @@
 
                         <input
                             id="resistance"
-                            type="number"
+                            type="text"
                             value="1385.055"
-                            step="any"
                             inputmode="decimal"
                         >
 
@@ -69,11 +64,9 @@
 
                 </div>
 
-
                 <div class="conversion-arrow">
                     ⇄
                 </div>
-
 
                 <div>
 
@@ -85,11 +78,10 @@
 
                         <input
                             id="temperature"
-                            type="number"
+                            type="text"
                             value="100"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>°C</span>
@@ -98,9 +90,7 @@
 
                 </div>
 
-
             </div>
-
 
             <div class="pt100-reference">
 
@@ -116,7 +106,6 @@
 
                 </div>
 
-
                 <div class="reference-item">
 
                     <span class="reference-temperature">
@@ -128,7 +117,6 @@
                     </span>
 
                 </div>
-
 
                 <div class="reference-item">
 
@@ -144,17 +132,15 @@
 
             </div>
 
-
             <p class="range-note">
                 IEC 60751 characteristic · −200 to +850 °C
             </p>
-
 
         </section>
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="pt1000.js"></script>
 
 </body>

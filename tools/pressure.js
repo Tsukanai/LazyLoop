@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     Pressure Converter
@@ -7,6 +8,10 @@
 
     Any displayed unit can be edited.
     All other units are recalculated from it.
+
+    Numeric input:
+        Both decimal point and comma accepted
+        through shared parseInput().
 */
 
 
@@ -50,7 +55,7 @@ const absolute =
 const atmosphere =
     document.getElementById("atmosphere");
 
-    const pressureWarning =
+const pressureWarning =
     document.getElementById("pressureWarning");
 
 
@@ -76,7 +81,7 @@ const TO_PA = {
 
     mmhg: 133.322387415,
 
-    inhg: 3386.389,
+    inhg: 3386.389
 
 };
 
@@ -91,7 +96,7 @@ function updatePressureUnits(
 ) {
 
     const value =
-        Number(sourceElement.value);
+        parseInput(sourceElement.value);
 
 
     if (!Number.isFinite(value)) {
@@ -146,48 +151,59 @@ function updatePressureUnits(
                 pascal / TO_PA.psi
             );
     }
+
+
     if (sourceName !== "mmh2o") {
 
-    mmh2o.value =
-        formatPressure(
-            pascal / TO_PA.mmh2o
-        );
-}
+        mmh2o.value =
+            formatPressure(
+                pascal / TO_PA.mmh2o
+            );
+    }
 
 
     if (sourceName !== "inh2o") {
 
-    inh2o.value =
-        formatPressure(
-            pascal / TO_PA.inh2o
-        );
-}
+        inh2o.value =
+            formatPressure(
+                pascal / TO_PA.inh2o
+            );
+    }
 
 
     if (sourceName !== "mmhg") {
 
-    mmhg.value =
-        formatPressure(
-            pascal / TO_PA.mmhg
-        );
-}
+        mmhg.value =
+            formatPressure(
+                pascal / TO_PA.mmhg
+            );
+    }
 
 
     if (sourceName !== "inhg") {
 
-    inhg.value =
-        formatPressure(
-            pascal / TO_PA.inhg
-        );
+        inhg.value =
+            formatPressure(
+                pascal / TO_PA.inhg
+            );
+    }
 }
-}
+
+
+// --------------------------------------------------
+// Absolute pressure warning
+// --------------------------------------------------
 
 function updatePressureWarning() {
 
     const absolutePressure =
-        Number(absolute.value);
+        parseInput(absolute.value);
 
-    if (absolutePressure < 0) {
+
+    if (
+        Number.isFinite(absolutePressure) &&
+        absolutePressure < 0
+    ) {
 
         pressureWarning.style.display =
             "block";
@@ -199,6 +215,8 @@ function updatePressureWarning() {
             "none";
     }
 }
+
+
 // --------------------------------------------------
 // Gauge -> absolute
 // --------------------------------------------------
@@ -206,10 +224,10 @@ function updatePressureWarning() {
 function gaugeToAbsolute() {
 
     const gaugePressure =
-        Number(gauge.value);
+        parseInput(gauge.value);
 
     const atmosphericPressure =
-        Number(atmosphere.value);
+        parseInput(atmosphere.value);
 
 
     if (
@@ -225,7 +243,9 @@ function gaugeToAbsolute() {
             gaugePressure +
             atmosphericPressure
         );
-        updatePressureWarning();
+
+
+    updatePressureWarning();
 }
 
 
@@ -236,10 +256,10 @@ function gaugeToAbsolute() {
 function absoluteToGauge() {
 
     const absolutePressure =
-        Number(absolute.value);
+        parseInput(absolute.value);
 
     const atmosphericPressure =
-        Number(atmosphere.value);
+        parseInput(atmosphere.value);
 
 
     if (
@@ -255,7 +275,9 @@ function absoluteToGauge() {
             absolutePressure -
             atmosphericPressure
         );
-        updatePressureWarning();
+
+
+    updatePressureWarning();
 }
 
 
@@ -272,16 +294,13 @@ function formatPressure(value) {
 
 
 // --------------------------------------------------
-// Unit event listeners
+// Pressure unit event listeners
 // --------------------------------------------------
 
 bar.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "bar",
-            bar
-        );
+        updatePressureUnits("bar", bar);
     }
 );
 
@@ -289,10 +308,7 @@ bar.addEventListener(
 kpa.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "kpa",
-            kpa
-        );
+        updatePressureUnits("kpa", kpa);
     }
 );
 
@@ -300,10 +316,7 @@ kpa.addEventListener(
 mpa.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "mpa",
-            mpa
-        );
+        updatePressureUnits("mpa", mpa);
     }
 );
 
@@ -311,10 +324,7 @@ mpa.addEventListener(
 mbar.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "mbar",
-            mbar
-        );
+        updatePressureUnits("mbar", mbar);
     }
 );
 
@@ -322,20 +332,15 @@ mbar.addEventListener(
 psi.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "psi",
-            psi
-        );
+        updatePressureUnits("psi", psi);
     }
 );
+
 
 mmh2o.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "mmh2o",
-            mmh2o
-        );
+        updatePressureUnits("mmh2o", mmh2o);
     }
 );
 
@@ -343,10 +348,7 @@ mmh2o.addEventListener(
 inh2o.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "inh2o",
-            inh2o
-        );
+        updatePressureUnits("inh2o", inh2o);
     }
 );
 
@@ -354,10 +356,7 @@ inh2o.addEventListener(
 mmhg.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "mmhg",
-            mmhg
-        );
+        updatePressureUnits("mmhg", mmhg);
     }
 );
 
@@ -365,12 +364,10 @@ mmhg.addEventListener(
 inhg.addEventListener(
     "input",
     function () {
-        updatePressureUnits(
-            "inhg",
-            inhg
-        );
+        updatePressureUnits("inhg", inhg);
     }
 );
+
 
 // --------------------------------------------------
 // Gauge / absolute event listeners

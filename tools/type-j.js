@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     Type J Thermocouple Calculator
@@ -9,12 +10,10 @@
     Reference-function range:
         -210 °C to +1200 °C
 
-    Thermocouple EMF is calculated relative
-    to a 0 °C reference junction.
+    Emeasured = Ehot - Ecold
 
-    For an arbitrary cold-junction temperature:
-
-        Emeasured = Ehot - Ecold
+    Decimal comma and point supported
+    through shared parseInput().
 */
 
 
@@ -85,38 +84,33 @@ const emfDisplay =
 
 
 // --------------------------------------------------
-// Hot-junction temperature -> measured EMF
+// Temperature -> measured EMF
 // --------------------------------------------------
 
 function temperatureToEmf() {
 
     const hotTemperature =
-        Number(temperature.value);
+        parseInput(temperature.value);
 
     const coldTemperature =
-        Number(coldJunction.value);
-
+        parseInput(coldJunction.value);
 
     if (
         !Number.isFinite(hotTemperature) ||
         !Number.isFinite(coldTemperature)
     ) {
+        updateDisplays();
         return;
     }
-
 
     if (
         !temperatureIsValid(hotTemperature) ||
         !temperatureIsValid(coldTemperature)
     ) {
-
         emf.value = "";
-
         updateDisplays();
-
         return;
     }
-
 
     const hotEmf =
         referenceEmf(hotTemperature);
@@ -124,57 +118,46 @@ function temperatureToEmf() {
     const coldEmf =
         referenceEmf(coldTemperature);
 
-
     const measuredEmf =
         hotEmf - coldEmf;
 
-
     emf.value =
         formatEmf(measuredEmf);
-
 
     updateDisplays();
 }
 
 
 // --------------------------------------------------
-// Measured EMF -> hot-junction temperature
+// Measured EMF -> temperature
 // --------------------------------------------------
 
 function emfToTemperature() {
 
     const measuredEmf =
-        Number(emf.value);
+        parseInput(emf.value);
 
     const coldTemperature =
-        Number(coldJunction.value);
-
+        parseInput(coldJunction.value);
 
     if (
         !Number.isFinite(measuredEmf) ||
         !Number.isFinite(coldTemperature)
     ) {
+        updateDisplays();
         return;
     }
-
 
     if (!temperatureIsValid(coldTemperature)) {
-
         temperature.value = "";
-
         updateDisplays();
-
         return;
     }
 
-
     /*
-        Convert the editable cold junction to its
-        equivalent 0 °C referenced EMF.
+        Cold-junction compensation:
 
-        Then add the measured thermocouple EMF:
-
-            Ehot = Emeasured + Ecold
+        Ehot = Emeasured + Ecold
     */
 
     const coldEmf =
@@ -183,36 +166,28 @@ function emfToTemperature() {
     const hotReferenceEmf =
         measuredEmf + coldEmf;
 
-
     const minimumEmf =
         referenceEmf(MIN_TEMP);
 
     const maximumEmf =
         referenceEmf(MAX_TEMP);
 
-
     if (
         hotReferenceEmf < minimumEmf ||
         hotReferenceEmf > maximumEmf
     ) {
-
         temperature.value = "";
-
         updateDisplays();
-
         return;
     }
-
 
     const hotTemperature =
         temperatureFromReferenceEmf(
             hotReferenceEmf
         );
 
-
     temperature.value =
         formatTemperature(hotTemperature);
-
 
     updateDisplays();
 }
@@ -220,9 +195,7 @@ function emfToTemperature() {
 
 // --------------------------------------------------
 // NIST reference function
-//
-// Temperature -> EMF referenced to 0 °C
-// Result is millivolts
+// Temperature -> EMF (mV), referenced to 0 °C
 // --------------------------------------------------
 
 function referenceEmf(t) {
@@ -232,21 +205,18 @@ function referenceEmf(t) {
             ? LOW_COEFFICIENTS
             : HIGH_COEFFICIENTS;
 
-
     let result = 0;
 
+    // Horner's polynomial evaluation
 
     for (
         let i = coefficients.length - 1;
         i >= 0;
         i--
     ) {
-
         result =
-            result * t +
-            coefficients[i];
+            result * t + coefficients[i];
     }
-
 
     return result;
 }
@@ -254,22 +224,13 @@ function referenceEmf(t) {
 
 // --------------------------------------------------
 // Reference EMF -> temperature
-//
-// The Type J reference function is monotonic over
-// the supported range, so bisection gives a robust
-// inverse without requiring a separate approximation.
+// Bisection solver
 // --------------------------------------------------
 
-function temperatureFromReferenceEmf(
-    targetEmf
-) {
+function temperatureFromReferenceEmf(targetEmf) {
 
-    let low =
-        MIN_TEMP;
-
-    let high =
-        MAX_TEMP;
-
+    let low = MIN_TEMP;
+    let high = MAX_TEMP;
 
     for (let i = 0; i < 80; i++) {
 
@@ -279,20 +240,12 @@ function temperatureFromReferenceEmf(
         const middleEmf =
             referenceEmf(middle);
 
-
         if (middleEmf < targetEmf) {
-
-            low =
-                middle;
-        }
-
-        else {
-
-            high =
-                middle;
+            low = middle;
+        } else {
+            high = middle;
         }
     }
-
 
     return (low + high) / 2;
 }
@@ -305,6 +258,7 @@ function temperatureFromReferenceEmf(
 function temperatureIsValid(t) {
 
     return (
+        Number.isFinite(t) &&
         t >= MIN_TEMP &&
         t <= MAX_TEMP
     );
@@ -312,32 +266,29 @@ function temperatureIsValid(t) {
 
 
 // --------------------------------------------------
-// Display
+// Summary displays
 // --------------------------------------------------
 
 function updateDisplays() {
 
     const cold =
-        Number(coldJunction.value);
+        parseInput(coldJunction.value);
 
     const hot =
-        Number(temperature.value);
+        parseInput(temperature.value);
 
     const measured =
-        Number(emf.value);
-
+        parseInput(emf.value);
 
     cjcDisplay.textContent =
-        Number.isFinite(cold)
+        temperatureIsValid(cold)
             ? formatTemperature(cold) + " °C"
             : "—";
 
-
     hotDisplay.textContent =
-        Number.isFinite(hot)
+        temperatureIsValid(hot)
             ? formatTemperature(hot) + " °C"
             : "—";
-
 
     emfDisplay.textContent =
         Number.isFinite(measured)
@@ -347,7 +298,7 @@ function updateDisplays() {
 
 
 // --------------------------------------------------
-// Number formatting
+// Formatting
 // --------------------------------------------------
 
 function formatEmf(value) {
@@ -375,12 +326,10 @@ temperature.addEventListener(
     temperatureToEmf
 );
 
-
 emf.addEventListener(
     "input",
     emfToTemperature
 );
-
 
 coldJunction.addEventListener(
     "input",

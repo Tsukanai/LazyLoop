@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -7,7 +8,7 @@
 
     <title>Level | LazyLoop</title>
 
-        <script src="../theme.js"></script>
+    <script src="../theme.js"></script>
 
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -20,7 +21,6 @@
             ‹ LazyLoop
         </a>
 
-
         <header class="main-header">
 
             <h1>Level</h1>
@@ -30,7 +30,6 @@
             </p>
 
         </header>
-
 
         <section class="calculator-card">
 
@@ -42,9 +41,7 @@
 
             </div>
 
-
             <h2>Measurement Range</h2>
-
 
             <div class="engineering-grid">
 
@@ -55,11 +52,10 @@
 
                         <input
                             id="zeroHeight"
-                            type="number"
+                            type="text"
                             value="10"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>cm</span>
@@ -67,7 +63,6 @@
                     </div>
 
                 </label>
-
 
                 <label>
                     100% Level Height
@@ -76,11 +71,10 @@
 
                         <input
                             id="fullHeight"
-                            type="number"
+                            type="text"
                             value="500"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>cm</span>
@@ -88,27 +82,25 @@
                     </div>
 
                 </label>
+
                 <div class="calculated-field">
 
-    <label>
-        Geometric Span
-    </label>
+                    <label>
+                        Geometric Span
+                    </label>
 
-    <div class="calculated-value">
-        <span id="geometricSpan">495</span>
-        <span>cm</span>
-    </div>
+                    <div class="calculated-value">
+                        <span id="geometricSpan">495</span>
+                        <span>cm</span>
+                    </div>
 
-</div>
+                </div>
 
             </div>
 
-
             <div class="divider"></div>
 
-
             <h2>Process Liquid</h2>
-
 
             <div class="engineering-grid">
 
@@ -119,9 +111,8 @@
 
                         <input
                             id="density"
-                            type="number"
+                            type="text"
                             value="830"
-                            step="any"
                             inputmode="decimal"
                         >
 
@@ -131,15 +122,13 @@
 
                 </label>
 
-
                 <label>
                     Specific Gravity
 
                     <input
                         id="specificGravity"
-                        type="number"
+                        type="text"
                         value="0.83"
-                        step="any"
                         inputmode="decimal"
                     >
 
@@ -147,12 +136,9 @@
 
             </div>
 
-
             <div class="divider"></div>
 
-
             <h2>Transmitter Range</h2>
-
 
             <div class="pt100-reference">
 
@@ -171,7 +157,6 @@
 
                 </div>
 
-
                 <div class="reference-item">
 
                     <span class="reference-temperature">
@@ -186,7 +171,6 @@
                     </span>
 
                 </div>
-
 
                 <div class="reference-item">
 
@@ -205,17 +189,15 @@
 
             </div>
 
-
             <p class="range-note">
                 Hydrostatic pressure · standard gravity 9.80665 m/s²
             </p>
-
 
         </section>
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="level-atmospheric.js"></script>
 
 </body>

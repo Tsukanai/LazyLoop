@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -8,7 +9,6 @@
     <title>Type T Thermocouple | LazyLoop</title>
 
     <script src="../theme.js"></script>
-
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -21,10 +21,9 @@
         </a>
 
         <header class="main-header">
-            <h1>Thermocouple (E)</h1>
+            <h1>Thermocouple (T)</h1>
             <p>EMF ⇄ Temperature</p>
         </header>
-
 
         <section class="calculator-card">
 
@@ -33,158 +32,126 @@
                 NIST reference function
             </div>
 
-
             <h2>Cold Junction / Reference</h2>
 
             <div class="value-input">
-
                 <input
                     id="coldJunction"
-                    type="number"
+                    type="text"
                     value="0"
-                    step="any"
                     inputmode="decimal"
                     data-signed
                 >
-
                 <span>°C</span>
-
             </div>
 
-
             <div class="divider"></div>
-
 
             <div class="conversion">
 
                 <div>
-
                     <label>Thermocouple EMF</label>
 
                     <div class="value-input">
-
                         <input
                             id="emf"
-                            type="number"
-                            value="6.319"
-                            step="any"
+                            type="text"
+                            value="4.279"
                             inputmode="decimal"
                             data-signed
                         >
-
                         <span>mV</span>
-
                     </div>
-
                 </div>
 
-
-                <div class="conversion-arrow">
-                    ⇄
-                </div>
-
+                <div class="conversion-arrow">⇄</div>
 
                 <div>
-
                     <label>Hot Junction</label>
 
                     <div class="value-input">
-
                         <input
                             id="temperature"
-                            type="number"
+                            type="text"
                             value="100"
-                            step="any"
                             inputmode="decimal"
                             data-signed
                         >
-
                         <span>°C</span>
-
                     </div>
-
                 </div>
 
             </div>
-
 
             <div class="pt100-reference">
 
                 <div class="reference-item">
-
                     <span class="reference-temperature">
                         Cold Junction
                     </span>
-
                     <span
                         id="cjcDisplay"
                         class="reference-resistance"
-                    >
-                        0 °C
-                    </span>
-
+                    >0 °C</span>
                 </div>
 
-
                 <div class="reference-item">
-
                     <span class="reference-temperature">
                         Hot Junction
                     </span>
-
                     <span
                         id="hotDisplay"
                         class="reference-resistance"
-                    >
-                        100 °C
-                    </span>
-
+                    >100 °C</span>
                 </div>
 
-
                 <div class="reference-item">
-
                     <span class="reference-temperature">
                         Measured EMF
                     </span>
-
                     <span
                         id="emfDisplay"
                         class="reference-resistance"
-                    >
-                        6.319 mV
-                    </span>
-
+                    >4.279 mV</span>
                 </div>
 
             </div>
 
-
-            <div class="tc-materials" aria-label="Thermocouple conductor materials">
+            <div
+                class="tc-materials"
+                aria-label="Thermocouple conductor materials"
+            >
                 <h2>Conductor materials</h2>
+
                 <div class="tc-materials-grid">
+
                     <div>
-                        <span class="tc-material-label">Positive (+)</span>
+                        <span class="tc-material-label">
+                            Positive (+)
+                        </span>
                         <strong>Copper</strong>
                     </div>
+
                     <div>
-                        <span class="tc-material-label">Negative (−)</span>
+                        <span class="tc-material-label">
+                            Negative (−)
+                        </span>
                         <strong>Constantan</strong>
                     </div>
+
                 </div>
             </div>
 
             <p class="range-note">
-                Type T ITS-90 · -270 to +400 °C
+                Type T ITS-90 · −270 to +400 °C
             </p>
 
         </section>
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="type-t.js"></script>
 
 </body>
-
 </html>

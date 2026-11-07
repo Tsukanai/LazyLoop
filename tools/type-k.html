@@ -1,14 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Type K Thermocouple | LazyLoop</title>
 
-        <script src="../theme.js"></script>
-
+    <script src="../theme.js"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -25,14 +26,13 @@
             <p>EMF ⇄ Temperature</p>
         </header>
 
-
         <section class="calculator-card">
 
             <div class="standard-info">
-                <strong>Type K · ITS-90</strong><br>
+                <strong>Type K · ITS-90</strong>
+                <br>
                 NIST reference function
             </div>
-
 
             <h2>Cold Junction / Reference</h2>
 
@@ -40,20 +40,17 @@
 
                 <input
                     id="coldJunction"
-                    type="number"
+                    type="text"
                     value="0"
-                    step="any"
                     inputmode="decimal"
-                        data-signed
+                    data-signed
                 >
 
                 <span>°C</span>
 
             </div>
 
-
             <div class="divider"></div>
-
 
             <div class="conversion">
 
@@ -65,11 +62,10 @@
 
                         <input
                             id="emf"
-                            type="number"
+                            type="text"
                             value="4.096"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>mV</span>
@@ -78,11 +74,9 @@
 
                 </div>
 
-
                 <div class="conversion-arrow">
                     ⇄
                 </div>
-
 
                 <div>
 
@@ -92,11 +86,10 @@
 
                         <input
                             id="temperature"
-                            type="number"
+                            type="text"
                             value="100"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
 
                         <span>°C</span>
@@ -106,7 +99,6 @@
                 </div>
 
             </div>
-
 
             <div class="pt100-reference">
 
@@ -125,7 +117,6 @@
 
                 </div>
 
-
                 <div class="reference-item">
 
                     <span class="reference-temperature">
@@ -140,7 +131,6 @@
                     </span>
 
                 </div>
-
 
                 <div class="reference-item">
 
@@ -159,19 +149,31 @@
 
             </div>
 
+            <div
+                class="tc-materials"
+                aria-label="Thermocouple conductor materials"
+            >
 
-            <div class="tc-materials" aria-label="Thermocouple conductor materials">
                 <h2>Conductor materials</h2>
+
                 <div class="tc-materials-grid">
+
                     <div>
-                        <span class="tc-material-label">Positive (+)</span>
+                        <span class="tc-material-label">
+                            Positive (+)
+                        </span>
                         <strong>Chromel</strong>
                     </div>
+
                     <div>
-                        <span class="tc-material-label">Negative (−)</span>
+                        <span class="tc-material-label">
+                            Negative (−)
+                        </span>
                         <strong>Alumel</strong>
                     </div>
+
                 </div>
+
             </div>
 
             <p class="range-note">
@@ -182,7 +184,7 @@
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="type-k.js"></script>
 
 </body>

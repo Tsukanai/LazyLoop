@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -7,8 +8,7 @@
 
     <title>Pressure | LazyLoop</title>
 
-        <script src="../theme.js"></script>
-
+    <script src="../theme.js"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -20,22 +20,14 @@
             ‹ LazyLoop
         </a>
 
-
         <header class="main-header">
-
             <h1>Pressure</h1>
-
-            <p>
-                Pressure conversion & field tools
-            </p>
-
+            <p>Pressure conversion & field tools</p>
         </header>
-
 
         <section class="calculator-card">
 
             <h2>Pressure Conversion</h2>
-
 
             <div class="pressure-unit-grid">
 
@@ -43,102 +35,88 @@
                     bar
                     <input
                         id="bar"
-                        type="number"
+                        type="text"
                         value="1"
-                        step="any"
                         inputmode="decimal"
                         data-signed
                     >
                 </label>
-
 
                 <label>
                     kPa
                     <input
                         id="kpa"
-                        type="number"
-                        step="any"
+                        type="text"
                         inputmode="decimal"
                         data-signed
                     >
                 </label>
-
 
                 <label>
                     MPa
                     <input
                         id="mpa"
-                        type="number"
-                        step="any"
+                        type="text"
                         inputmode="decimal"
                         data-signed
                     >
                 </label>
-
 
                 <label>
                     mbar
                     <input
                         id="mbar"
-                        type="number"
-                        step="any"
+                        type="text"
                         inputmode="decimal"
                         data-signed
                     >
                 </label>
-
 
                 <label>
                     psi
                     <input
                         id="psi"
-                        type="number"
-                        step="any"
+                        type="text"
                         inputmode="decimal"
                         data-signed
                     >
                 </label>
 
-
                 <label>
                     mmH₂O
                     <input
-                    id="mmh2o"
-                    type="number"
-                    step="any"
-                    inputmode="decimal"
-                    data-signed
-                     >
+                        id="mmh2o"
+                        type="text"
+                        inputmode="decimal"
+                        data-signed
+                    >
                 </label>
 
                 <label>
                     inH₂O
                     <input
-                    id="inh2o"
-                     type="number"
-                    step="any"
-                     inputmode="decimal"
-                    data-signed
-                     >
+                        id="inh2o"
+                        type="text"
+                        inputmode="decimal"
+                        data-signed
+                    >
                 </label>
 
                 <label>
                     mmHg
                     <input
                         id="mmhg"
-                        type="number"
-                        step="any"
+                        type="text"
                         inputmode="decimal"
                         data-signed
-                      >
+                    >
                 </label>
 
                 <label>
                     inHg
                     <input
                         id="inhg"
-                        type="number"
-                        step="any"
+                        type="text"
                         inputmode="decimal"
                         data-signed
                     >
@@ -146,124 +124,92 @@
 
             </div>
 
-
             <div class="divider"></div>
 
-
             <h2>Gauge / Absolute</h2>
-
 
             <div class="conversion">
 
                 <div>
-
                     <label>Gauge Pressure</label>
 
                     <div class="value-input">
-
                         <input
                             id="gauge"
-                            type="number"
+                            type="text"
                             value="0"
-                            step="any"
                             inputmode="decimal"
-                        data-signed
+                            data-signed
                         >
-
                         <span>bar(g)</span>
-
                     </div>
-
                 </div>
-
 
                 <div class="conversion-arrow">
                     ⇄
                 </div>
 
-
                 <div>
-
                     <label>Absolute Pressure</label>
 
                     <div class="value-input">
-
                         <input
                             id="absolute"
-                            type="number"
+                            type="text"
                             value="1.01325"
-                            step="any"
                             inputmode="decimal"
                         >
-
                         <span>bar(a)</span>
-
                     </div>
-
                 </div>
 
             </div>
-
 
             <div class="standard-info pressure-atmosphere">
 
                 <strong>Atmospheric pressure</strong>
 
                 <div class="value-input">
-
                     <input
                         id="atmosphere"
-                        type="number"
+                        type="text"
                         value="1.01325"
-                        step="any"
                         inputmode="decimal"
                     >
-
                     <span>bar(a)</span>
-
                 </div>
 
             </div>
 
             <div
-    id="pressureWarning"
-    class="signal-status failure pressure-warning"
->
-    ABSOLUTE PRESSURE &lt; 0 — PHYSICS DISAGREES
-</div>
+                id="pressureWarning"
+                class="signal-status failure pressure-warning"
+            >
+                ABSOLUTE PRESSURE &lt; 0 — PHYSICS DISAGREES
+            </div>
 
         </section>
 
-
-        <a class="tool-card pressure-secondary-tool"
-           href="pressure-head.html">
-
-            <div class="tool-symbol">
-                H
-            </div>
+        <a
+            class="tool-card pressure-secondary-tool"
+            href="pressure-head.html"
+        >
+            <div class="tool-symbol">H</div>
 
             <div class="tool-info">
-
                 <h2>Pressure / Head</h2>
-
                 <p>
                     Pressure ⇄ liquid column · Density · SG
                 </p>
-
             </div>
 
-            <div class="tool-arrow">
-                ›
-            </div>
-
+            <div class="tool-arrow">›</div>
         </a>
-
 
     </main>
 
-
+    <script src="../input-utils.js"></script>
     <script src="pressure.js"></script>
 
 </body>
-
 </html>

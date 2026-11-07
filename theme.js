@@ -1,3 +1,4 @@
+
 'use strict';
 
 (function () {
@@ -57,13 +58,29 @@
             }
 
             signButton.addEventListener('click', function () {
-                if (input.value.trim() === '') return;
+                const original = input.value.trim();
 
-                const value = Number(input.value);
+                if (original === '') return;
+
+                // Accept both decimal separators.
+                const normalized = original.replace(',', '.');
+                const value = Number(normalized);
+
                 if (!Number.isFinite(value)) return;
 
-                input.value = value === 0 ? '0' : String(-value);
-                input.dispatchEvent(new Event('input', { bubbles: true }));
+                // Preserve the user's decimal separator.
+                if (value === 0) {
+                    input.value = '0';
+                } else if (original.startsWith('-')) {
+                    input.value = original.slice(1);
+                } else {
+                    input.value = '-' + original;
+                }
+
+                // Trigger the calculator to update.
+                input.dispatchEvent(
+                    new Event('input', { bubbles: true })
+                );
             });
         });
     }

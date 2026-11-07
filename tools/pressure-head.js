@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     Pressure / Liquid Head
@@ -55,10 +56,10 @@ const specificGravity =
 function headToPressure() {
 
     const h =
-        Number(head.value);
+        parseInput(head.value);
 
     const rho =
-        Number(density.value);
+        parseInput(density.value);
 
 
     if (
@@ -95,10 +96,10 @@ function headToPressure() {
 function pressureToHead() {
 
     const pressureBar =
-        Number(pressure.value);
+        parseInput(pressure.value);
 
     const rho =
-        Number(density.value);
+        parseInput(density.value);
 
 
     if (
@@ -138,7 +139,7 @@ function pressureToHead() {
 function densityToSG() {
 
     const rho =
-        Number(density.value);
+        parseInput(density.value);
 
 
     if (!Number.isFinite(rho)) {
@@ -170,7 +171,7 @@ function densityToSG() {
 function sgToDensity() {
 
     const sg =
-        Number(specificGravity.value);
+        parseInput(specificGravity.value);
 
 
     if (!Number.isFinite(sg)) {

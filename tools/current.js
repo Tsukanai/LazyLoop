@@ -1,3 +1,4 @@
+
 /*
     LazyLoop
     4–20 mA Field Calculator
@@ -84,13 +85,13 @@ const signalMarker =
 function currentToPV() {
 
     const pvLow =
-        Number(engineeringLow.value);
+        parseInput(engineeringLow.value);
 
     const pvHigh =
-        Number(engineeringHigh.value);
+        parseInput(engineeringHigh.value);
 
     const i =
-        Number(current.value);
+        parseInput(current.value);
 
 
     /*
@@ -146,13 +147,13 @@ function currentToPV() {
 function pvToCurrent() {
 
     const pvLow =
-        Number(engineeringLow.value);
+        parseInput(engineeringLow.value);
 
     const pvHigh =
-        Number(engineeringHigh.value);
+        parseInput(engineeringHigh.value);
 
     const pv =
-        Number(processValue.value);
+        parseInput(processValue.value);
 
 
     const engineeringSpan =
@@ -227,7 +228,6 @@ function updateSignalStatus(currentValue) {
         span before reaching the failure thresholds.
     */
 
-
     if (currentValue <= FAILURE_LOW) {
 
         signalStatus.textContent =
@@ -236,7 +236,6 @@ function updateSignalStatus(currentValue) {
         signalStatus.className =
             "signal-status failure";
     }
-
 
     else if (currentValue < CURRENT_LOW) {
 
@@ -247,7 +246,6 @@ function updateSignalStatus(currentValue) {
             "signal-status warning";
     }
 
-
     else if (currentValue <= CURRENT_HIGH) {
 
         signalStatus.textContent =
@@ -257,7 +255,6 @@ function updateSignalStatus(currentValue) {
             "signal-status in-range";
     }
 
-
     else if (currentValue < FAILURE_HIGH) {
 
         signalStatus.textContent =
@@ -266,7 +263,6 @@ function updateSignalStatus(currentValue) {
         signalStatus.className =
             "signal-status warning";
     }
-
 
     else {
 
